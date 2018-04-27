@@ -8,7 +8,7 @@
         <h1>Welcome</h1>
         <p>Lorem ipsum dolor sit amet, 
           consectetur adipiscing</p>
-        <ComponentButton @click="$router.push('/select-character')">Get Started</ComponentButton>
+        <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
       </div>
       <router-link to="/login" class="login">Log In</router-link>
     </div>
@@ -21,6 +21,11 @@ import ComponentButton from '@/components/Button'
 export default {
   components: {
     ComponentButton
+  },
+  methods: {
+    navigateToSelectCharacter () {
+      this.$router.push('/select-character')
+    }
   }
 }
 </script>
