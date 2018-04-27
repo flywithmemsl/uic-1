@@ -1,51 +1,58 @@
 <template>
-  <div class="container">
-    <div class="course_wrapper">
-      <img src='@/assets/course_detail.png' class="background">
-      <img src="@/assets/heart.png" class="heart">
-      <h1>Cavity Prevention</h1>
-      <div class="lvl">LVL 4</div>
-      <div class="stats_wrapper">
-        <div class="stats">
-          <img class="icon" src="@/assets/students.png" alt="students">
-          <div class="count">5.8k</div>
-          <div class="name">Students</div>
+  <NavigationLayout :back="true" :menu="true">
+    <div class="container">
+      <div class="course_wrapper">
+        <img src='@/assets/course_detail.png' class="background">
+        <img src="@/assets/heart.png" class="heart">
+        <h1>Cavity Prevention</h1>
+        <div class="lvl">LVL 4</div>
+        <div class="stats_wrapper">
+          <div class="stats">
+            <img class="icon" src="@/assets/students.png" alt="students">
+            <div class="count">5.8k</div>
+            <div class="name">Students</div>
+          </div>
+          <div class="stats">
+            <img class="icon" src="@/assets/raiting.png" alt="rating">
+            <div class="count">5.0</div>
+            <div class="name">Rating</div>
+          </div>
+          <div class="stats">
+            <img class="icon" src="@/assets/lessons.png" alt="lessons">
+            <div class="count">11</div>
+            <div class="name">Lessons</div>
+          </div>
         </div>
-        <div class="stats">
-          <img class="icon" src="@/assets/raiting.png" alt="rating">
-          <div class="count">5.0</div>
-          <div class="name">Rating</div>
-        </div>
-        <div class="stats">
-          <img class="icon" src="@/assets/lessons.png" alt="lessons">
-          <div class="count">11</div>
-          <div class="name">Lessons</div>
-        </div>
+        <img @click="$router.push('/cards')" class="download" src="@/assets/download_btn.png" alt="btn">
       </div>
-      <img @click="$router.push('/cards')" class="download" src="@/assets/download_btn.png" alt="btn">
+      <v-touch @swipeup="handleSwipeTop">
+        <div class="swipe_up">
+          <img class="arrow" src="@/assets/swipe_arrow.png" />
+          <p>Swipe up to see course contents</p>
+        </div>
+      </v-touch>
     </div>
-    <v-touch @swipeup="handleSwipeTop">
-      <div class="swipe_up">
-        <img class="arrow" src="@/assets/swipe_arrow.png" />
-        <p>Swipe up to see course contents</p>
-      </div>
-    </v-touch>
-  </div>
+  </NavigationLayout>
 </template>
 
 <script>
+import NavigationLayout from '@/layouts/NavigationLayout'
+
 export default {
   methods: {
     handleSwipeTop () {
       this.$router.push('/cards')
     }
+  },
+  components: {
+    NavigationLayout
   }
 }
 </script>
 
 <style scoped lang="scss">
   .course_wrapper {
-    margin-top: 65px;
+    margin-top: 20px;
     position: relative;
     background: #25606B;
     border-radius: 10px;
