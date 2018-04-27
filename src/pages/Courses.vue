@@ -5,7 +5,7 @@
     </div>
     <Switcher :menuNames="menuNames" />
     <div class="courses_wrapper">
-      <div class="course">
+      <div @click="navigateToCourse" class="course">
         <div class="course_top">
           <img class="icon" src="@/assets/Courses/1.png" alt="">
           <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
@@ -13,7 +13,7 @@
         </div>
         <div class="progress_bar"></div>
       </div>
-      <div class="course">
+      <div @click="navigateToCourse" class="course">
         <div class="course_top">
           <img class="icon" src="@/assets/Courses/2.png" alt="">
           <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
@@ -21,7 +21,7 @@
         </div>
         <div class="progress_bar"></div>
       </div>
-      <div class="course">
+      <div @click="navigateToCourse" class="course">
         <div class="course_top">
           <img class="icon" src="@/assets/Courses/3.png" alt="">
           <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
@@ -29,7 +29,7 @@
         </div>
         <div class="progress_bar"></div>
       </div>
-      <div class="course">
+      <div @click="navigateToCourse" class="course">
         <div class="course_top">
           <img class="icon" src="@/assets/Courses/4.png" alt="">
           <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
@@ -37,7 +37,7 @@
         </div>
         <div class="progress_bar"></div>
       </div>
-      <div class="course">
+      <div @click="navigateToCourse" class="course">
         <div class="course_top">
           <img class="icon" src="@/assets/Courses/5.png" alt="">
           <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
@@ -45,7 +45,7 @@
         </div>
         <div class="complete">Complete</div>
       </div>
-      <div class="course">
+      <div @click="navigateToCourse" class="course">
         <div class="course_top">
           <img class="icon" src="@/assets/Courses/6.png" alt="">
           <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
@@ -60,13 +60,18 @@
 <script>
 import Switcher from '@/components/CoursesSwitcher'
   export default {
-  data: () => ({
-    menuNames: [
-      'All',
-      'Ongoing',
-      'Completed'
-    ]
-  }),
+    data: () => ({
+      menuNames: [
+        'All',
+        'Ongoing',
+        'Completed'
+      ]
+    }),
+    methods: {
+      navigateToCourse() {
+        this.$router.push('/details')
+      }
+    },
     components: {
       Switcher
     }

@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout>
+  <NavigationLayout :back="true" :menu="true">
     <h1>Select A Character</h1>
     <div>
       <div

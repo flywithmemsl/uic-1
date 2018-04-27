@@ -1,28 +1,26 @@
 <template>
-  <div class="container">
-    <img src="@/assets/top.png" class="top">
-    <div class="navigation">
-      <img src="@/assets/back.png" alt="">
-      <img src="@/assets/big_dots.png" alt="">
-    </div>
-    <h1>Cavity Prevention</h1>
-    <Switcher :menuNames='menuNames'/>
-    <div class="cards">
-      <div class="content">
-        <div class="title">Introduction</div>
-        <div class="article">Article</div>
-        <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+  <NavigationLayout :topImage="require('@/assets/top.png')" :back="true" :menu="true">
+    <div>
+      <h1>Cavity Prevention</h1>
+      <Switcher :menuNames='menuNames'/>
+      <div class="cards">
+        <div class="content">
+          <div class="title">Introduction</div>
+          <div class="article">Article</div>
+          <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+        </div>
+        <img src='@/assets/card.png' class="card main">
+        <img src='@/assets/card.png' class="card one">
+        <img src='@/assets/card.png' class="card two">
+        <img src='@/assets/card.png' class="card three">
       </div>
-      <img src='@/assets/card.png' class="card main">
-      <img src='@/assets/card.png' class="card one">
-      <img src='@/assets/card.png' class="card two">
-      <img src='@/assets/card.png' class="card three">
     </div>
-  </div>
+  </NavigationLayout>
 </template>
 
 
 <script>
+import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
 export default {
   data: () => ({
@@ -33,24 +31,13 @@ export default {
     ]
   }),
   components: {
-    Switcher
+    Switcher,
+    NavigationLayout
   }
 }
 </script>
 
 <style scoped lang='scss'>
-  .container {
-    position: relative; 
-    padding-top: 20px;
-
-    .top {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: auto;
-      height: 13px;
-    }
-  }
 
   .navigation {
     display: flex;

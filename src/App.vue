@@ -35,7 +35,7 @@ h1 {
 
 .container {
   max-width: 375px;
-  padding: 0 30px;
+  padding: 0 20px;
   margin: 0 auto;
 }
 </style>

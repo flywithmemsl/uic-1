@@ -22,17 +22,24 @@
           <div class="name">Lessons</div>
         </div>
       </div>
-      <img class="download" src="@/assets/download_btn.png" alt="btn">
+      <img @click="$router.go(-1)" class="download" src="@/assets/download_btn.png" alt="btn">
     </div>
-    <div class="swipe_up">
-      <img class="arrow" src="@/assets/swipe_arrow.png" />
-      <p>Swipe up to see course contents</p>
-    </div>
+    <v-touch @swipeup="handleSwipeTop">
+      <div class="swipe_up">
+        <img class="arrow" src="@/assets/swipe_arrow.png" />
+        <p>Swipe up to see course contents</p>
+      </div>
+    </v-touch>
   </div>
 </template>
 
 <script>
 export default {
+  methods: {
+    handleSwipeTop () {
+      this.$router.push('/cards')
+    }
+  }
 }
 </script>
 

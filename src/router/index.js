@@ -6,6 +6,7 @@ import Details from '@/pages/Details'
 import Cards from '@/pages/Cards'
 import Login from '@/pages/Login'
 import SelectCharacter from '@/pages/SelectCharacter'
+import SelectAge from '@/pages/SelectAge'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/select-character',
       name: 'SelectCharacter',
       component: SelectCharacter
+    },
+    {
+      path: '/select-age',
+      name: 'SelectAge',
+      component: SelectAge
     }
   ]
 })
