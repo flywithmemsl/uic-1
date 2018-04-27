@@ -1,11 +1,11 @@
 <template>
-  <div class="button">{{ text }}</div>
+  <div @click="$emit('click')" class="button">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
   export default {
-    props: ['text']
-
   }
 </script>
 

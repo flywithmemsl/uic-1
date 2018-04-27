@@ -8,11 +8,9 @@
         <h1>Welcome</h1>
         <p>Lorem ipsum dolor sit amet, 
           consectetur adipiscing</p>
-        <ComponentButton text='Get Started'/>
+        <ComponentButton @click="$router.push('/select-character')">Get Started</ComponentButton>
       </div>
-      <div>
-        <a href="" class="login">Log In</a>
-      </div>
+      <router-link to="/login" class="login">Log In</router-link>
     </div>
   </div>
 </template>
@@ -54,13 +52,13 @@ p {
 }
 
 .login {
+  height: 36px;
   font-family: 'Gotham';
   text-decoration: underline;
   font-size: 18px;
   text-decoration: underline;
   color: rgba(255,255,255,0.7);
   display: inherit;
-  text-align: center;
   text-align: center;
   margin-top: 80px;
 }

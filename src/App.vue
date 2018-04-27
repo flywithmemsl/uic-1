@@ -19,6 +19,13 @@ export default {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 30px;
+  font-family: 'Zilla Slab', serif;
+  color: rgba(255,255,255,1);
+  margin: 1rem 0;
+}
+
 #app {
   overflow-y: scroll;
   height: 100vh;
