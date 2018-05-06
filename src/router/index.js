@@ -9,6 +9,7 @@ import SelectCharacter from '@/pages/SelectCharacter'
 import SelectAge from '@/pages/SelectAge'
 import Achievements from '@/pages/Achievements'
 import Congrats from '@/pages/Congrats'
+import Questions from '@/pages/Questions'
 
 Vue.use(Router)
 
@@ -59,6 +60,11 @@ export default new Router({
       path: '/congrats',
       name: 'Congrats',
       component: Congrats
+    },
+    {
+      path: '/questions',
+      name: 'Questions',
+      component: Questions
     }
   ]
 })

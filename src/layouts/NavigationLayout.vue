@@ -1,15 +1,17 @@
 <template>
   <div class="container" :style="{paddingTop: topImage ? '20px' : '0'}" >
     <img v-if="topImage" :src="topImage" class="top">
-    <NavigationControls :back="back" :menu="menu" />
+    <NavigationControls :back="back" :menu="menu" :steps='steps' />
     <slot />
   </div>
 </template>
 
 <script>
+
 import NavigationControls from '@/components/NavigationControls'
+
 export default {
-  props: ['topImage', 'back', 'menu'],
+  props: ['topImage', 'back', 'menu', 'steps'],
   components: {
     NavigationControls
   }
@@ -18,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  position: relative; 
+  position: relative;
 
   .top {
     position: absolute;
