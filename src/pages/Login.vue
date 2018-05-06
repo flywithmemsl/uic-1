@@ -11,6 +11,7 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import LoginForm from '@/forms/LoginForm'
 
 export default {
+  name: 'LoginPage',
   components: {
     NavigationLayout,
     LoginForm

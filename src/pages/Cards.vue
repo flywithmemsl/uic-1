@@ -9,15 +9,25 @@
               <div class="title">Introduction</div>
               <div class="article">Article</div>
               <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+
+              <ComponentButton
+                      type="submit"
+                      @click="$router.push('/article')"
+                >
+                Start
+              </ComponentButton>
             </div>
             <img src='@/assets/card.png' class="card main">
             <img src='@/assets/card.png' class="card one">
             <img src='@/assets/card.png' class="card two">
             <img src='@/assets/card.png' class="card three">
+
           </div>
         </div>
 
-        <div slot="form_1">card 2</div>
+        <div slot="form_1" class='reviews'>
+          <ReviewCard v-if="review && review.author" v-for="(review, index) in reviews" :key="index" :review="review" />
+        </div>
       </TabsSwitcher>
     </div>
   </NavigationLayout>
@@ -26,23 +36,24 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
-import Switcher from '@/components/CoursesSwitcher'
 import TabsSwitcher from '@/components/shared/TabsSwitcher'
+import ReviewCard from '@/components/cards/ReviewCard'
+
+import ComponentButton from '@/components/Button'
+
+// data
+import reviews from '@/data/reviews'
 
 export default {
   data: () => ({
-    menuNames: [
-      {name: 'Lessons', active: true},
-      {name: 'Review'},
-      {name: 'About'}
-    ],
-
-    tabs: ['Lessons', 'Review', 'About']
+    tabs: ['Lessons', 'Review', 'About'],
+    reviews
   }),
   components: {
-    Switcher,
+    ReviewCard,
     TabsSwitcher,
-    NavigationLayout
+    NavigationLayout,
+    ComponentButton
   }
 }
 </script>
@@ -62,10 +73,11 @@ export default {
 
   h1 {
     margin-top: 20px;
+    margin-bottom: 60px;
     color: #fff;
   }
 
-  .card {
+  .cards .card {
     position: absolute;
     height: auto;
     width: 274px;
@@ -115,22 +127,43 @@ export default {
 
   }
   .title {
-    font-family: 'Lato';
+    font-family: 'Zilla Slab';
+    font-weight: normal;
     font-size: 22px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
     margin-top: 20px;
   }
 
   .article {
     font-family: 'Lato';
+    font-weight: 300;
     opacity: 0.6;
     margin-bottom: 20px;
   }
 
   .text {
     font-family: 'Lato';
+    font-weight: 300;
     opacity: 0.8;
     width: 220px;
-    margin-top: 50px;
+    margin-top: 21px;
+    opacity: 0.7;
+    font-size: 17px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 25px;
+  }
+
+
+  .reviews {
+    margin-top: 60px;
+
+    .card {
+      margin-bottom: 15px;
+    }
   }
 
 </style>

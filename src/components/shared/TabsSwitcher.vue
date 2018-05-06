@@ -46,6 +46,7 @@ export default {
     border: 0;
 
     .tab {
+      transition: all 0.2s ease;
       font-weight: 500;
       opacity: 0.6;
       font-size: 20px;
@@ -58,13 +59,11 @@ export default {
       letter-spacing: 0.3px;
 
       &.active {
+        opacity: 1;
         color: #FF6D7F;
         text-decoration: underline;
       }
     }
   }
 
-  .tabs-content {
-    padding: 25px;
-  }
 </style>
