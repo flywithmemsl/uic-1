@@ -4,9 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueTouch from 'vue-touch'
+import Vuelidate from 'vuelidate'
 
 Vue.config.productionTip = false
 
+Vue.use(Vuelidate)
 Vue.use(VueTouch, { name: 'v-touch' })
 
 /* eslint-disable no-new */
