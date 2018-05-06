@@ -7,6 +7,7 @@ import Cards from '@/pages/Cards'
 import Login from '@/pages/Login'
 import SelectCharacter from '@/pages/SelectCharacter'
 import SelectAge from '@/pages/SelectAge'
+import Achievements from '@/pages/Achievements'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/select-age',
       name: 'SelectAge',
       component: SelectAge
+    },
+    {
+      path: '/achievements',
+      name: 'Achievements',
+      component: Achievements
     }
   ]
 })

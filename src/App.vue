@@ -24,6 +24,7 @@ h1 {
   font-family: 'Zilla Slab', serif;
   color: rgba(255,255,255,1);
   margin: 1rem 0;
+  letter-spacing: 1px;
 }
 
 #app {

@@ -57,6 +57,9 @@ export default {
     line-height: 10px;
     margin-right: 22px;
     cursor: pointer;
+    font-family: 'Zilla Slab';
+    font-weight: 600;
+    letter-spacing: 0.3px;
     // margin-top: 10px;
 
     &.active {
