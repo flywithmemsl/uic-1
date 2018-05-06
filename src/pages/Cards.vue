@@ -25,9 +25,9 @@ import Switcher from '@/components/CoursesSwitcher'
 export default {
   data: () => ({
     menuNames: [
-      'Lessons',
-      'Review',
-      'About'
+      {name: 'Lessons', active: true},
+      {name: 'Review'},
+      {name: 'About'}
     ]
   }),
   components: {
@@ -61,25 +61,25 @@ export default {
     width: 274px;
     box-shadow: 0 27px 36px 0 rgba(0,14,31,0.54);
     border-radius: 10px;
-    
+
     &.main {
       z-index: 5;
     }
-    
+
     &.one {
       right: 5px;
       z-index: 4;
       transform: scale(0.9);
       box-shadow: 0 27px 36px 0 rgba(0,14,31,0.54);
     }
-    
+
     &.two {
       right: -25px;
       z-index: 3;
       transform: scale(0.8);
       box-shadow: 0 27px 36px 0 rgba(0,14,31,0.54);
     }
-    
+
     &.three {
       right: -53px;
       z-index: 2;

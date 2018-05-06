@@ -62,9 +62,9 @@ import Switcher from '@/components/CoursesSwitcher'
   export default {
     data: () => ({
       menuNames: [
-        'All',
-        'Ongoing',
-        'Completed'
+        {name: 'All', active: true},
+        {name: 'Ongoing'},
+        {name: 'Completed'}
       ]
     }),
     methods: {
