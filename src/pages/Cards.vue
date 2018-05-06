@@ -2,18 +2,23 @@
   <NavigationLayout :topImage="require('@/assets/top.png')" :back="true" :menu="true">
     <div>
       <h1>Cavity Prevention</h1>
-      <Switcher :menuNames='menuNames'/>
-      <div class="cards">
-        <div class="content">
-          <div class="title">Introduction</div>
-          <div class="article">Article</div>
-          <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+      <TabsSwitcher :tabs="tabs">
+        <div class="cards" slot="form_0">
+          <div>
+            <div class="content">
+              <div class="title">Introduction</div>
+              <div class="article">Article</div>
+              <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+            </div>
+            <img src='@/assets/card.png' class="card main">
+            <img src='@/assets/card.png' class="card one">
+            <img src='@/assets/card.png' class="card two">
+            <img src='@/assets/card.png' class="card three">
+          </div>
         </div>
-        <img src='@/assets/card.png' class="card main">
-        <img src='@/assets/card.png' class="card one">
-        <img src='@/assets/card.png' class="card two">
-        <img src='@/assets/card.png' class="card three">
-      </div>
+
+        <div slot="form_1">card 2</div>
+      </TabsSwitcher>
     </div>
   </NavigationLayout>
 </template>
@@ -22,16 +27,21 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
+import TabsSwitcher from '@/components/shared/TabsSwitcher'
+
 export default {
   data: () => ({
     menuNames: [
       {name: 'Lessons', active: true},
       {name: 'Review'},
       {name: 'About'}
-    ]
+    ],
+
+    tabs: ['Lessons', 'Review', 'About']
   }),
   components: {
     Switcher,
+    TabsSwitcher,
     NavigationLayout
   }
 }

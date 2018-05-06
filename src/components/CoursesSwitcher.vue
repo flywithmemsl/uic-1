@@ -49,7 +49,6 @@ export default {
   }
 
   .items {
-    font-family: 'Gotham';
     font-weight: 500;
     opacity: 0.6;
     font-size: 20px;
