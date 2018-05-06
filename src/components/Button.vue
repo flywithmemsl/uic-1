@@ -13,7 +13,7 @@
 .button {
   cursor: pointer;
   font-family: 'Zilla Slab';
-  font-weight: 600;
+  font-weight: 500;
   font-size: 19px;
   text-transform: capitalize;
   text-align: center;

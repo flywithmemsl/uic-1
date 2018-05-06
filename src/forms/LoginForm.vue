@@ -37,7 +37,6 @@
 
       <loader v-if='loading'></loader>
       <ComponentButton
-              class="btn btn_lightblue"
               type="submit"
               @click='submit'
               v-else
