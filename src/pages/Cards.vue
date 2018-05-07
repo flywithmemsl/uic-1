@@ -204,7 +204,6 @@ export default {
     font-weight: 300;
     opacity: 0.8;
     width: 220px;
-    margin-top: 21px;
     opacity: 0.7;
     font-size: 17px;
     color: #FFFFFF;
