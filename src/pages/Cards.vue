@@ -5,23 +5,26 @@
       <TabsSwitcher :tabs="tabs">
         <div class="cards" slot="form_0">
           <div>
-            <div class="content">
-              <div class="title">Introduction</div>
-              <div class="article">Article</div>
-              <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+              <v-touch v-on:swipeleft="goToNextCard" v-on:swiperight="goToPrevCard" >
+                <div class="card"
+                      :key="index"
+                      :class="{main: card == activeCard, prev: checkIsPrev(card), next: checkIsNext(card)}"
+                      v-for="(card, index) in cards" >
+                  <img  src='@/assets/card.png' class="card">
+                  <div class="content">
+                    <div class="title">{{card.name}}</div>
+                    <div class="article">{{card.type}}</div>
+                    <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
 
-              <ComponentButton
-                      type="submit"
-                      @click="$router.push('/questions')"
-                >
-                Start
-              </ComponentButton>
-            </div>
-            <img src='@/assets/card.png' class="card main">
-            <img src='@/assets/card.png' class="card one">
-            <img src='@/assets/card.png' class="card two">
-            <img src='@/assets/card.png' class="card three">
-
+                    <ComponentButton
+                            type="submit"
+                            @click="$router.push('/questions')"
+                      >
+                      Start
+                    </ComponentButton>
+                  </div>
+                </div>
+              </v-touch>
           </div>
         </div>
 
@@ -47,6 +50,7 @@ import reviews from '@/data/reviews'
 export default {
   data: () => ({
     tabs: ['Lessons', 'Review', 'About'],
+    activeCard: null,
     reviews
   }),
   components: {
@@ -54,11 +58,51 @@ export default {
     TabsSwitcher,
     NavigationLayout,
     ComponentButton
+  },
+
+  computed: {
+    cards () {
+      return [0,1,2,3,4].map((e, i) => {
+        return {
+          name: 'Introduction ' + i,
+          type: 'Article',
+          desc: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor'
+        }
+      })
+    }
+  },
+
+  mounted () {
+    this.activeCard = this.cards[0]
+  },
+
+  methods: {
+    goToNextCard () {
+      let index = this.cards.indexOf(this.activeCard)
+      this.activeCard = this.cards[index + 1]
+    },
+
+    goToPrevCard () {
+      let index = this.cards.indexOf(this.activeCard)
+      this.activeCard = this.cards[index - 1]
+    },
+
+    checkIsNext (card) {
+      return !(this.activeCard == card) && !this.checkIsPrev(card)
+    },
+
+    checkIsPrev (card) {
+      return this.cards.indexOf(card) < this.cards.indexOf(this.activeCard)
+    }
   }
 }
 </script>
 
 <style scoped lang='scss'>
+.flip-list-move {
+  transition: transform 1s;
+}
+
 
   .navigation {
     display: flex;
@@ -83,9 +127,21 @@ export default {
     width: 274px;
     box-shadow: 0 27px 36px 0 rgba(0,14,31,0.54);
     border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    transform: translateX(0px);
 
     &.main {
       z-index: 5;
+    }
+
+    &.next {
+      z-index: 4;
+      transform: translateX(20%) translateY(20px) scale(0.9);
+    }
+
+    &.prev {
+      z-index: 4;
+      transform: translateX(-20%) translateY(20px) scale(0.9);
     }
 
     &.one {
