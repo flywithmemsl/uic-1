@@ -7,13 +7,23 @@
         <img v-else class='step-img' src="@/assets/step-dash.svg" alt="">
       </div>
     </div>
-    <img v-if="menu" src="@/assets/big_dots.png" alt="">
+    <img v-if="menu" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
+    <img v-if="close" src="@/assets/close-icon.svg" alt="" @click="$emit('closeClick')">
   </div>
 </template>
 
 <script>
 export default {
-  props: ['back', 'menu', 'steps']
+  name: 'NavigationControls',
+
+  props: {
+    'back': Boolean,
+    'menu': Boolean,
+    'steps': [Array, Object],
+    'close': {
+      default: false
+    }
+  },
 }
 </script>
 

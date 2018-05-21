@@ -6,7 +6,8 @@
 
 <script>
 export default {
-  props: ['selected']
+  props: ['selected'],
+  name: 'BaseCard'
 }
 </script>
 
