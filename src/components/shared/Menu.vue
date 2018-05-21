@@ -21,7 +21,7 @@
       </base-card>
 
       <div class="cards-row">
-        <base-card>
+        <base-card @click="goToRoute('/account')">
           <img class="card-photo" src="@/assets/account-img.jpg" />
           <div class="text">Account</div>
         </base-card>
@@ -45,6 +45,13 @@ export default {
   components: {
     BaseCard,
     NavigationControls
+  },
+
+  methods: {
+    goToRoute (route) {
+      this.$emit('closeClick')
+      this.$router.push(route)
+    }
   }
 }
 </script>

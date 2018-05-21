@@ -10,6 +10,7 @@ import SelectAge from '@/pages/SelectAge'
 import Achievements from '@/pages/Achievements'
 import Congrats from '@/pages/Congrats'
 import Questions from '@/pages/Questions'
+import Account from '@/pages/Account'
 
 Vue.use(Router)
 
@@ -65,6 +66,11 @@ export default new Router({
       path: '/questions',
       name: 'Questions',
       component: Questions
+    },
+    {
+      path: '/account',
+      name: 'Account',
+      component: Account
     }
   ]
 })
