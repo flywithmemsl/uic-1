@@ -2,7 +2,7 @@
   <nav>
     <h2>{{name}}</h2>
     <ul class="menu-list">
-      <li v-for="(item, index) in items" :key="index">
+      <li v-for="(item, index) in items" :key="index" @click="goToRoute(item.link)">
         <div class="col">
           <img  class="icon" :src="getAvatar(item.icon)" alt="">
           <div>{{item.name}}</div>
@@ -27,6 +27,10 @@ export default {
   methods: {
     getAvatar (name) {
       return name.length ? require(`../../assets/${name}`) : require(`../../assets/fav-courses-icon.svg`)
+    },
+
+    goToRoute (link) {
+      link ? this.$router.push(link) : null
     }
   }
 }
@@ -92,8 +96,9 @@ h2 {
   opacity: 0.3;
   font-family: 'Lato';
   font-size: 12px;
+  font-weight: 300;
   color: #FFFFFF;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 </style>
