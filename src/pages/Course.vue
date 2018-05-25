@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <CourseContainer></CourseContainer>
+    <CourseContainer :curseId="$route.params.id || 0"></CourseContainer>
   </NavigationLayout>
 </template>
 
@@ -9,12 +9,27 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import CourseContainer from '@/containers/Course'
 
 export default {
-  name: 'QuestionsPage',
+  name: 'CoursePage',
 
   components: {
     NavigationLayout,
     CourseContainer
   },
+
+  data () {
+    return {
+      showNextBtn: false
+    }
+  },
+
+  computed: {
+    steps () {
+      // replace with actual data from vuex
+      return [0,1,2,3,4,5].map((q, index) => {
+        return index === 0 ? {active: true} : {active: false}
+      })
+    }
+  }
 }
 </script>
 

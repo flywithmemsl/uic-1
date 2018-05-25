@@ -1,12 +1,12 @@
 <template>
   <div class="navigation">
     <img @click="$router.go(-1)" v-if="back" src="@/assets/back.png" alt="">
-    <div class="steps">
-      <div v-for="(step, index) in steps" :key="index">
-        <img v-if="step && step.active" class='step-img' src="@/assets/active-step-dash.svg" alt="">
-        <img v-else class='step-img' src="@/assets/step-dash.svg" alt="">
-      </div>
-    </div>
+    <!--<div class="steps">-->
+      <!--<div v-for="(step, index) in steps" :key="index">-->
+        <!--<img v-if="step && step.active" class='step-img' src="@/assets/active-step-dash.svg" alt="">-->
+        <!--<img v-else class='step-img' src="@/assets/step-dash.svg" alt="">-->
+      <!--</div>-->
+    <!--</div>-->
     <img v-if="menu" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
     <img v-if="close" src="@/assets/close-icon.svg" alt="" @click="$emit('closeClick')">
   </div>

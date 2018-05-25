@@ -11,6 +11,7 @@ import Achievements from '@/pages/Achievements'
 import Congrats from '@/pages/Congrats'
 import Questions from '@/pages/Questions'
 import Account from '@/pages/Account'
+import Course from '@/pages/Course'
 
 Vue.use(Router)
 
@@ -71,6 +72,11 @@ export default new Router({
       path: '/account',
       name: 'Account',
       component: Account
+    },
+    {
+      path: '/course/:id',
+      name: 'Course',
+      component: Course
     }
   ]
 })

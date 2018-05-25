@@ -9,7 +9,7 @@
       <div class="subheading">
         You unlocked a new badge!
       </div>
-      <ComponentButton type="submit" v-bind:class="{ loading: loading }" @click="$router.push('/achievements')">
+      <ComponentButton type="submit" @click="$router.push('/achievements')">
         Awesome!
       </ComponentButton>
     </div>

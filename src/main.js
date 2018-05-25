@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import VueTouch from 'vue-touch'
 import Vuelidate from 'vuelidate'
+import VueGoodWizard from 'vue-good-wizard'
 
 Vue.config.productionTip = false
 
+Vue.use(VueGoodWizard);
 Vue.use(Vuelidate)
 Vue.use(VueTouch, { name: 'v-touch' })
 

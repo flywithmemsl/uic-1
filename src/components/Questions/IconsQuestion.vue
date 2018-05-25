@@ -2,22 +2,22 @@
   <div class="question">
     <h2>{{questionCard.text}}</h2>
     <div class="answers">
-      <AnswerCard
+      <AnswerIconCard
         v-for="(answer, index) in questionCard.answers"
         :answer="answer"
         :key="index"
         :selected="answer.selected"
-        @click="handleAnswerClick(answer)"/>
+        @click="handleAnswerClick(answer, question)"/>
     </div>
   </div>
 </template>
 
 <script>
-import AnswerCard from '@/components/cards/AnswerCard'
+import AnswerIconCard from '@/components/cards/AnswerIconCard'
 
   export default {
     props: ['question'],
-    components: { AnswerCard },
+    components: { AnswerIconCard },
 
     data () {
       return {
@@ -68,16 +68,23 @@ h2 {
   margin-top: 40px;
   margin-bottom: 60px;
 }
+
 .answers {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 
   .card {
+    flex: 1 1 0%;
+    margin: 6px;
     overflow: hidden;
     margin-bottom: 15px;
-    min-width: 145px;
+    min-width: 93px;
+    max-width: 31%;
     cursor: pointer;
+    align-self: flex-start;
+    text-align: center;
+    padding: 15px;
   }
 }
 </style>
