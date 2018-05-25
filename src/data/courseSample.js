@@ -83,7 +83,7 @@ export default {
         },
         {
           value: 'Brush Teeth',
-          image: 'brush.svg'
+          image: 'tooth.svg'
         },
         {
           value: 'Brush Teeth',
