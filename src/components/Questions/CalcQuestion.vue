@@ -1,104 +1,105 @@
 <template>
-  <div class="question">
-    <h2>{{questionCard.text}}</h2>
-    <div class="variants">
-
-      <draggable
-        v-model="questionCard.variants"
-        class="dragArea"
-        :options="{group:'variants'}">
-
-        <transition-group>
+  <BaseQuestion :questionCard="questionCard">
+    <div class="question-content" slot="questionContent">
+      <div class="variants">
+        <draggable
+          v-model="questionCard.variants"
+          class="dragArea"
+          :options="{group:'variants'}">
           <AnswerIconCard
             v-for="(variant, index) in questionCard.variants"
             :answer="variant"
             :key="index"
             :selected="variant.selected"
             @click="handleAnswerClick(answer, question)"/>
-        </transition-group>
-      </draggable>
+        </draggable>
+      </div>
 
-    </div>
-
-    <div class="answers">
-
-      <div class="field">
-        <draggable v-model="fields[0]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-          <transition-group>
+      <div class="answers">
+        <div class="field">
+          <draggable v-model="fields[0]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
               v-for="(variant, i) in fields[0]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
               @click="handleAnswerClick(answer, question)"/>
-          </transition-group>
-        </draggable>
-      </div>
+          </draggable>
+        </div>
 
-      <div class="field">
-        <draggable v-model="fields[1]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-          <transition-group>
+        <div class="gap">
+          <img src="@/assets/plus.svg" alt="">
+        </div>
+
+        <div class="field">
+          <draggable v-model="fields[1]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
               v-for="(variant, i) in fields[1]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
               @click="handleAnswerClick(answer, question)"/>
-          </transition-group>
-        </draggable>
-      </div>
+          </draggable>
+        </div>
 
-      <div class="field">
-        <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-          <transition-group>
+        <div class="field">
+          <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
               v-for="(variant, i) in fields[2]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
               @click="handleAnswerClick(answer, question)"/>
-          </transition-group>
-        </draggable>
-      </div>
+          </draggable>
+        </div>
 
-      <div class="field">
-        <draggable v-model="fields[3]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-          <transition-group>
+        <div class="gap">
+          <img src="@/assets/plus.svg" alt="">
+        </div>
+
+
+        <div class="field">
+          <draggable v-model="fields[3]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
               v-for="(variant, i) in fields[3]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
               @click="handleAnswerClick(answer, question)"/>
-          </transition-group>
-        </draggable>
-      </div>
+          </draggable>
+        </div>
 
-      <div class="field">
-        <draggable v-model="fields[4]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-          <transition-group>
+        <div class="row-gap">
+          <img src="@/assets/eq-icon.png" alt="">
+        </div>
+
+        <div class="field">
+          <draggable v-model="fields[4]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
               v-for="(variant, i) in fields[4]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
               @click="handleAnswerClick(answer, question)"/>
-          </transition-group>
-        </draggable>
-      </div>
+          </draggable>
+        </div>
 
+      </div>
     </div>
-  </div>
+  </BaseQuestion>
 </template>
 
 <script>
   import AnswerIconCard from '@/components/cards/AnswerIconCard'
+  import BaseQuestion from '@/components/Questions/BaseQuestion'
+
   import draggable from 'vuedraggable'
 
   export default {
     props: ['question'],
     components: {
       AnswerIconCard,
+      BaseQuestion,
       draggable
     },
 
@@ -150,26 +151,48 @@
 </script>
 
 <style lang="scss" scoped>
-.handleDragChange {
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
 
-}
 .dragArea {
   min-height: 66px;
   width: 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-  >span {
-    display: flex;
-    justify-content: center;
-    min-height: 66px;
-    min-width: 100%;
-  }
+.gap {
+  flex: 1 1 21px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.row-gap {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1 1 100%;
+  width: 100%;
+
+  margin-top: 55px;
+}
+
+/deep/ .question-header {
+  margin-bottom: 27px;
 }
 
 .field {
   border-bottom: 1px solid #fff;
   min-height: 66px;
   padding: 0 10px;
-  width: calc(50% - 10px);
+  width: calc(40% - 10px);
+  margin-top: 8px;
 
   .field-content {
     display: flex;
@@ -177,24 +200,8 @@
   }
 }
 
-h2 {
-  font-family: 'Zilla Slab';
-  font-weight: 300;
-  font-size: 33px;
-  color: #FFFFFF;
-  letter-spacing: 0.7px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 40px;
-  margin-bottom: 60px;
-}
-
-
 .variants {
-  span {
-    display: flex;
-    justify-content: space-around;
-  }
+  min-height: 78px;
 }
 
 .answers {
@@ -209,9 +216,9 @@ h2 {
   cursor: pointer;
   margin: 4px;
   text-align: center;
-  width: 100%;
-  max-width: 60px;
-  height: 70px;
+  min-width: 58px;
+  max-width: 58px;
+  height: 67px;
 
   /deep/ .info {
     display: none;

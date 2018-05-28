@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="curse-container">
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
@@ -90,68 +90,76 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/deep/ .wizard__steps {
-  height: auto;
-  display: flex;
-  max-width: calc(100% - 40px);
-}
-/deep/ .wizard__step {
-  height: auto;
-
-  &.active {
-    .wizard__step__indicator {
-      background-color: #87DBA2;
-      opacity: 1;
-    }
-  }
-
-  .wizard__step__indicator {
-    border: none;
-    margin-left: auto;
-    width: 25px;
-    height: 6px;
-    border-radius: 5px;
-    background-color: #87DBA2;
-    opacity: 0.2;
-  }
-
-  .wizard__step__line,
-  .wizard__step__label {
-    display: none;
-  }
-}
-
-/deep/ .wizard__arrow {
-  display: none;
-}
-
-/deep/ .wizard__body {
-  margin: 0;
-  background-color: transparent;
-  border: none;
-
-  .wizard__body__step {
-    padding: 0;
-  }
-
-  .wizard__body__actions {
-    background-color: transparent;
-    border: none;
+.curse-container {
+  /deep/ .wizard__steps {
+    height: auto;
     display: flex;
     justify-content: center;
+    max-width: calc(100% - 40px);
+  }
 
-    .wizard__next,
-    .final-step {
-      width: 100%;
-      position: fixed;
-      background: #278AB5;
-      box-shadow: 0 -1px 22px 0 rgba(52,84,122,0.08);
-      height: 50px;
-      bottom: 0;
+  /deep/ .wizard__step {
+    height: auto;
+    width: auto !important;
+    min-width: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    &.active {
+      .wizard__step__indicator {
+        background-color: #87DBA2;
+        opacity: 1;
+      }
     }
 
-    .pull-left {
+    .wizard__step__indicator {
+      border: none;
+      margin-left: auto;
+      width: 25px;
+      height: 6px;
+      border-radius: 5px;
+      background-color: #87DBA2;
+      opacity: 0.2;
+    }
+
+    .wizard__step__line,
+    .wizard__step__label {
       display: none;
+    }
+  }
+
+  /deep/ .wizard__arrow {
+    display: none;
+  }
+
+  /deep/ .wizard__body {
+    margin: 0;
+    background-color: transparent;
+    border: none;
+
+    .wizard__body__step {
+      padding: 0;
+    }
+
+    .wizard__body__actions {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      justify-content: center;
+
+      .wizard__next,
+      .final-step {
+        width: 100%;
+        position: fixed;
+        background: #278AB5;
+        box-shadow: 0 -1px 22px 0 rgba(52,84,122,0.08);
+        height: 50px;
+        bottom: 0;
+      }
+
+      .pull-left {
+        display: none;
+      }
     }
   }
 }

@@ -1,23 +1,28 @@
 <template>
-  <div class="question">
-    <h2>{{questionCard.text}}</h2>
-    <div class="answers">
-      <AnswerCard
-        v-for="(answer, index) in questionCard.answers"
-        :answer="answer"
-        :key="index"
-        :selected="answer.selected"
-        @click="handleAnswerClick(answer, question)"/>
+  <BaseQuestion :questionCard="questionCard">
+    <div class="question-content" slot="questionContent">
+      <div class="answers">
+        <AnswerCard
+          v-for="(answer, index) in questionCard.answers"
+          :answer="answer"
+          :key="index"
+          :selected="answer.selected"
+          @click="handleAnswerClick(answer, question)"/>
+      </div>
     </div>
-  </div>
+  </BaseQuestion>
 </template>
 
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
+import BaseQuestion from '@/components/Questions/BaseQuestion'
 
   export default {
     props: ['question'],
-    components: { AnswerCard },
+    components: {
+      BaseQuestion,
+      AnswerCard
+    },
 
     data () {
       return {
@@ -57,17 +62,6 @@ import AnswerCard from '@/components/cards/AnswerCard'
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  font-family: 'Zilla Slab';
-  font-weight: 300;
-  font-size: 33px;
-  color: #FFFFFF;
-  letter-spacing: 0.7px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 40px;
-  margin-bottom: 60px;
-}
 .answers {
   display: flex;
   flex-wrap: wrap;

@@ -1,23 +1,28 @@
 <template>
-  <div class="question">
-    <h2>{{questionCard.text}}</h2>
-    <div class="answers">
-      <AnswerIconCard
-        v-for="(answer, index) in questionCard.answers"
-        :answer="answer"
-        :key="index"
-        :selected="answer.selected"
-        @click="handleAnswerClick(answer, question)"/>
+  <BaseQuestion :questionCard="questionCard">
+    <div class="question-content" slot="questionContent">
+      <div class="answers">
+        <AnswerIconCard
+          v-for="(answer, index) in questionCard.answers"
+          :answer="answer"
+          :key="index"
+          :selected="answer.selected"
+          @click="handleAnswerClick(answer, question)"/>
+      </div>
     </div>
-  </div>
+  </BaseQuestion>
 </template>
 
 <script>
 import AnswerIconCard from '@/components/cards/AnswerIconCard'
+import BaseQuestion from '@/components/Questions/BaseQuestion'
 
   export default {
     props: ['question'],
-    components: { AnswerIconCard },
+    components: {
+      BaseQuestion,
+      AnswerIconCard
+    },
 
     data () {
       return {
@@ -57,18 +62,6 @@ import AnswerIconCard from '@/components/cards/AnswerIconCard'
 </script>
 
 <style lang="scss" scoped>
-h2 {
-  font-family: 'Zilla Slab';
-  font-weight: 300;
-  font-size: 33px;
-  color: #FFFFFF;
-  letter-spacing: 0.7px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 40px;
-  margin-bottom: 60px;
-}
-
 .answers {
   display: flex;
   flex-wrap: wrap;
@@ -85,6 +78,14 @@ h2 {
     align-self: flex-start;
     text-align: center;
     padding: 15px;
+
+    /deep/ .text {
+      padding: 0;
+    }
+
+    /deep/ img {
+      height: 60px;
+    }
   }
 }
 </style>

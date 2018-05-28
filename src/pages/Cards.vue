@@ -18,7 +18,7 @@
 
                     <ComponentButton
                             type="submit"
-                            @click="$router.push('/questions')"
+                            @click="$router.push('/course/1')"
                       >
                       Start
                     </ComponentButton>

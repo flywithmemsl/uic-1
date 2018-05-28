@@ -5,13 +5,13 @@ export default {
       text: 'What’s inside your mouth?',
       id: '1',
       type: 'video',
-      link: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
       text: 'How do we get cavaties?',
       id: '2',
       type: 'video',
-      link: 'https://www.youtube.com/embed/tgbNymZ7vqY'
+      link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
       text: 'How do we stop bacteria monsters?',
@@ -24,28 +24,36 @@ export default {
         },
         {
           text: 'Eat Candy',
-          image: 'brush.svg'
-        },
-        {
-          text: 'Brush Teeth',
-          image: 'brush.svg'
-        },
-        {
-          text: 'Eat Candy',
-          image: 'brush.svg'
-        },
-        {
-          text: 'Brush Teeth',
-          image: 'brush.svg'
-        },
-        {
-          text: 'Eat Candy',
-          image: 'brush.svg'
+          image: 'candy.svg'
         },
         {
           text: 'Floss Daily',
-          image: 'brush.svg'
-        }
+          image: 'dental-floss.svg'
+        },
+        {
+          text: 'Drink Water',
+          image: 'water.svg'
+        },
+        {
+          text: 'Visit Dentist',
+          image: 'dentist.svg'
+        },
+        {
+          text: 'Bedtime Snacks',
+          image: 'sleep.svg'
+        },
+        {
+          text: 'Sugary Foods',
+          image: 'beverage.svg'
+        },
+        {
+          text: 'Get Exercise',
+          image: 'gym.svg'
+        },
+        {
+          text: 'Brush 2:00',
+          image: 'clock.svg'
+        },
       ]
     },
     {
@@ -78,24 +86,24 @@ export default {
       type: 'calc',
       variants: [
         {
-          value: 'Brush Teeth',
-          image: 'brush.svg'
+          value: 'clock',
+          image: 'clock.svg'
         },
         {
-          value: 'Brush Teeth',
+          value: 'tooth',
           image: 'tooth.svg'
         },
         {
-          value: 'Brush Teeth',
-          image: 'brush.svg'
+          value: 'popcorn',
+          image: 'popcorn.svg'
         },
         {
-          value: 'Brush Teeth',
-          image: 'brush.svg'
+          value: 'bacteria',
+          image: 'bacteria.svg'
         },
         {
-          value: 'Brush Teeth',
-          image: 'brush.svg'
+          value: 'caries',
+          image: 'caries.svg'
         }
       ]
     },

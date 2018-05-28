@@ -17,18 +17,7 @@ export default {
   },
 
   data () {
-    return {
-      showNextBtn: false
-    }
-  },
-
-  computed: {
-    steps () {
-      // replace with actual data from vuex
-      return [0,1,2,3,4,5].map((q, index) => {
-        return index === 0 ? {active: true} : {active: false}
-      })
-    }
+    return {}
   }
 }
 </script>

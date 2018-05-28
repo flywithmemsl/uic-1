@@ -8,7 +8,9 @@
       :close='close'
       @menuClick="showMenu = !showMenu"/>
     <slot />
-    <Menu v-show="showMenu" @closeClick="showMenu = !showMenu" />
+    <transition name="slide-fade">
+      <Menu v-show="showMenu" @closeClick="showMenu = !showMenu" />
+    </transition>
   </div>
 </template>
 
@@ -36,6 +38,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(100vw);
+  opacity: 0;
+}
+
 .menu {
   position: fixed;
   width: 100%;
