@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <h3>Games</h3>
+    <h3>Activities</h3>
     <div class="courses_wrapper">
       <div @click="navigateToCourse" class="game">
         <div class="course_top">
