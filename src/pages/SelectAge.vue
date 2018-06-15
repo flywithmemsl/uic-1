@@ -12,28 +12,16 @@
           :class="getButtonClassName(1)"
           @click="handleButtonClick(1)"
         >
-          3-5 years
+          Little Kids
         </div>
         <div
           :class="getButtonClassName(2)"
           @click="handleButtonClick(2)"
         >
-          5-7 years
-        </div>
-        <div
-          :class="getButtonClassName(3)"
-          @click="handleButtonClick(3)"
-        >
-          7-10 years
-        </div>
-        <div
-          :class="getButtonClassName(4)"
-          @click="handleButtonClick(4)"
-        >
-          10+ years
+          Big Kids
         </div>
       </div>
-      <ComponentButton @click="$router.push('/courses')">Continue </ComponentButton>
+      <ComponentButton @click="$router.push('/select-team')">Continue </ComponentButton>
     </div>
   </NavigationLayout>
 </template>
@@ -96,7 +84,7 @@ export default {
   background-color: #2E4A6E;
   border-radius: 50px;
   padding: 29px 22px 18px 22px;
-  width: 150px;
+  width: 100%;
   text-align: center;
   margin: 0 auto;
   margin-top: 30px;
