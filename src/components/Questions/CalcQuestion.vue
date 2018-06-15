@@ -42,41 +42,14 @@
           </draggable>
         </div>
 
-        <div class="field">
-          <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
-              v-for="(variant, i) in fields[2]"
-              :answer="variant"
-              :key="i"
-              :selected="variant.selected"
-              @click="handleAnswerClick(answer, question)"/>
-          </draggable>
-        </div>
-
-        <div class="gap">
-          <img src="@/assets/plus.svg" alt="">
-        </div>
-
-
-        <div class="field">
-          <draggable v-model="fields[3]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
-              v-for="(variant, i) in fields[3]"
-              :answer="variant"
-              :key="i"
-              :selected="variant.selected"
-              @click="handleAnswerClick(answer, question)"/>
-          </draggable>
-        </div>
-
         <div class="row-gap">
           <img src="@/assets/eq-icon.png" alt="">
         </div>
 
         <div class="field">
-          <draggable v-model="fields[4]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
+          <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
-              v-for="(variant, i) in fields[4]"
+              v-for="(variant, i) in fields[2]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
@@ -109,9 +82,7 @@
         fields: {
           0: [],
           1: [],
-          2: [],
-          3: [],
-          4: []
+          2: []
         }
       }
     },

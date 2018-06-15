@@ -27,6 +27,16 @@
           :question="question"
           @selectAnswer='handelAnswerSelect' />
 
+        <MatchQuestion
+          v-if="question.type === 'match'"
+          :question="question"
+          @selectAnswer='handelAnswerSelect' />
+
+        <MemoryQuestion
+          v-if="question.type === 'memory'"
+          :question="question"
+          @selectAnswer='handelAnswerSelect' />
+
       </div>
     </vue-good-wizard>
   </div>
@@ -37,6 +47,8 @@ import CardsQuestion from '@/components/questions/CardsQuestion'
 import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
+import MatchQuestion from '@/components/questions/MatchQuestion'
+import MemoryQuestion from '@/components/questions/MemoryQuestion'
 // data
 import CourseData from '@/data/courseSample'
 
@@ -51,7 +63,9 @@ export default {
     CardsQuestion,
     IconsQuestion,
     VideoQuestion,
-    CalcQuestion
+    CalcQuestion,
+    MatchQuestion,
+    MemoryQuestion
   },
 
   data () {
