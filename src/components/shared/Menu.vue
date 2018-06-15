@@ -5,17 +5,17 @@
         :back="false"
         :close='true'
         @closeClick="$emit('closeClick')"/>
-      <base-card>
+      <base-card @click="goToRoute('/courses')">
         <img class="card-photo" src="@/assets/curses-img.jpg" />
         <div class="text">Courses</div>
       </base-card>
 
-      <base-card>
+      <base-card @click="goToRoute('/brush')">
         <img class="card-photo" src="@/assets/brush-timer-img.jpg" />
         <div class="text">Brush Timer</div>
       </base-card>
 
-      <base-card>
+      <base-card @click="goToRoute('/article')">
         <img class="card-photo" src="@/assets/articles-img.jpg" />
         <div class="text">Articles</div>
       </base-card>
@@ -26,7 +26,7 @@
           <div class="text">Account</div>
         </base-card>
 
-        <base-card>
+        <base-card @click="goToRoute('/about')">
           <img class="card-photo" src="@/assets/about-img.jpg" />
           <div class="text">About</div>
         </base-card>
@@ -77,10 +77,11 @@ export default {
 
   .text {
     font-family: 'Zilla Slab';
-    font-size: 16px;
+    font-size: 18px;
     color: #FFFFFF;
     letter-spacing: 0;
     text-align: center;
+    padding: 5px;
   }
 }
 

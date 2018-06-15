@@ -29,7 +29,7 @@ export default {
       user: {
         avatar: 'account-img.jpg',
         name: 'Nimasha Perera',
-        points: '390,239',
+        points: '550',
         badges: [
           {
             name: 'badge name',
@@ -38,6 +38,14 @@ export default {
           {
             name: 'badge name 1',
             image: 'achieve_img_2.svg'
+          },
+          {
+            name: 'badge name 1',
+            image: 'achieve_img_1.svg'
+          },
+          {
+            name: 'badge name 1',
+            image: 'achieve_img_4.svg'
           }
         ]
       },
@@ -46,18 +54,20 @@ export default {
           name: 'General',
           items: [
             {
+              name: 'Achievements',
+              icon: 'achievements-icon.svg',
+              count: '50',
+              link: '/achievements'
+            },
+            {
               name: 'Favorite Courses',
               icon: 'fav-courses-icon.svg',
               link: '/courses'
             },
             {
-              name: 'My Friends',
+              name: 'My Team',
               icon: 'my-friends-icon.svg',
-              count: '50'
-            },
-            {
-              name: 'Achievements',
-              icon: 'achievements-icon.svg'
+              link: '/team'
             }
           ]
         },
@@ -65,16 +75,13 @@ export default {
           name: 'Settings',
           items: [
             {
-              name: 'Edit Login Details',
-              icon: 'edit-login-details-icon.svg'
+              name: 'Add Code',
+              icon: 'edit-login-details-icon.svg',
+              link: '/code'
             },
             {
-              name: 'Update Interests',
+              name: 'Edit Profile',
               icon: 'update-interests-icon.svg'
-            },
-            {
-              name: 'Blocked Users',
-              icon: 'block-users-icon.svg'
             }
           ]
         }
@@ -86,6 +93,6 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 </style>

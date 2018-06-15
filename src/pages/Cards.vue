@@ -1,38 +1,36 @@
 <template>
-  <NavigationLayout :topImage="require('@/assets/top.png')" :back="true" :menu="true">
-    <div>
-      <h1>Cavity Prevention</h1>
-      <TabsSwitcher :tabs="tabs">
-        <div class="cards" slot="form_0">
-          <div>
-              <v-touch v-on:swipeleft="goToNextCard" v-on:swiperight="goToPrevCard" >
-                <div class="card"
-                      :key="index"
-                      :class="{main: card == activeCard, prev: checkIsPrev(card), next: checkIsNext(card)}"
-                      v-for="(card, index) in cards" >
-                  <img  src='@/assets/card.png' class="card">
-                  <div class="content">
-                    <div class="title">{{card.name}}</div>
-                    <div class="article">{{card.type}}</div>
-                    <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+  <NavigationLayout :back="true" :menu="true">
+    <h1>Cavity Prevention</h1>
+    <TabsSwitcher :tabs="tabs">
+      <div class="cards" slot="form_0">
+        <div>
+            <v-touch v-on:swipeleft="goToNextCard" v-on:swiperight="goToPrevCard" >
+              <div class="card"
+                    :key="index"
+                    :class="{main: card == activeCard, prev: checkIsPrev(card), next: checkIsNext(card)}"
+                    v-for="(card, index) in cards" >
+                <img  src='@/assets/card.png' class="card">
+                <div class="content">
+                  <div class="title">{{card.name}}</div>
+                  <div class="article">{{card.type}}</div>
+                  <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
 
-                    <ComponentButton
-                            type="submit"
-                            @click="$router.push('/course/1')"
-                      >
-                      Start
-                    </ComponentButton>
-                  </div>
+                  <ComponentButton
+                          type="submit"
+                          @click="$router.push('/course/1')"
+                    >
+                    Start
+                  </ComponentButton>
                 </div>
-              </v-touch>
-          </div>
+              </div>
+            </v-touch>
         </div>
+      </div>
 
-        <div slot="form_1" class='reviews'>
-          <ReviewCard v-if="review && review.author" v-for="(review, index) in reviews" :key="index" :review="review" />
-        </div>
-      </TabsSwitcher>
-    </div>
+      <div slot="form_1" class='reviews'>
+        <ReviewCard v-if="review && review.author" v-for="(review, index) in reviews" :key="index" :review="review" />
+      </div>
+    </TabsSwitcher>
   </NavigationLayout>
 </template>
 
