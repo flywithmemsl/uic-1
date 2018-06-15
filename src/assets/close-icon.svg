@@ -4,9 +4,9 @@
     <title>close</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="⟶-Menu" transform="translate(-343.000000, -38.000000)" fill="#278AB5" stroke="#278AB5" stroke-width="1.5">
-            <path d="M353.711538,46.2884615 L363,46.2884615 L363,48.7115385 L353.711538,48.7115385 L353.711538,58 L351.288462,58 L351.288462,48.7115385 L342,48.7115385 L342,46.2884615 L351.288462,46.2884615 L351.288462,37 L353.711538,37 L353.711538,46.2884615 Z" id="close" transform="translate(352.500000, 47.500000) rotate(45.000000) translate(-352.500000, -47.500000) "></path>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="⟶-Questions" transform="translate(-25.000000, -38.000000)" fill="#3FC9DD" stroke="#3FC9DD" stroke-width="1.5">
+            <path d="M36.0607809,46.2884615 L45.3492424,46.2884615 L45.3492424,48.7115385 L36.0607809,48.7115385 L36.0607809,58 L33.6377039,58 L33.6377039,48.7115385 L24.3492424,48.7115385 L24.3492424,46.2884615 L33.6377039,46.2884615 L33.6377039,37 L36.0607809,37 L36.0607809,46.2884615 Z" id="close" transform="translate(34.849242, 47.500000) rotate(45.000000) translate(-34.849242, -47.500000) "></path>
         </g>
     </g>
 </svg>
