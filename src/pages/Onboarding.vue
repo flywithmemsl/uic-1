@@ -2,11 +2,11 @@
   <div class="container">
     <div>
       <div class="cards">
-        <img src="@/assets/main_bg.png">
+        <img src="@/assets/logo.svg">
       </div>
       <div>
         <h1>Welcome</h1>
-        <p>Lorem ipsum dolor sit amet, 
+        <p>Lorem ipsum dolor sit amet,
           consectetur adipiscing</p>
         <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
       </div>
@@ -36,8 +36,10 @@ export default {
   padding-top: 35px;
   width: 100%;
   img {
-    width: 100%;
+    width: 200px;
     height: auto;
+    margin: 0 auto;
+    display: inherit;
   }
 }
 

@@ -44,7 +44,7 @@ export default {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    margin-top: 40px;
+    margin-top: 20px;
     img {
       height: 17px;
       width: auto;

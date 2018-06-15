@@ -77,7 +77,7 @@ export default {
 .badge {
   width: 30px;
   height: 30px;
-  padding-right: 5px;
+  margin-right: 5px;
 
   img {
     width: 100%;
