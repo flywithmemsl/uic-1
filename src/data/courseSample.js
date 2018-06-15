@@ -108,145 +108,136 @@ export default {
       ]
     },
     {
-      text: 'Match the Items.',
+      text: 'Cavity Math 2',
+      desc: 'Arrange the icons to find the answer.',
       id: '6',
+      type: 'calc',
+      variants: [
+        {
+          value: 'clock',
+          image: 'clock.svg'
+        },
+        {
+          value: 'tooth',
+          image: 'tooth.svg'
+        },
+        {
+          value: 'popcorn',
+          image: 'popcorn.svg'
+        },
+        {
+          value: 'bacteria',
+          image: 'bacteria.svg'
+        },
+        {
+          value: 'caries',
+          image: 'caries.svg'
+        }
+      ]
+    },
+    {
+      text: 'Cavity Math 3',
+      desc: 'Arrange the icons to find the answer.',
+      id: '7',
+      type: 'calc',
+      variants: [
+        {
+          value: 'clock',
+          image: 'clock.svg'
+        },
+        {
+          value: 'tooth',
+          image: 'tooth.svg'
+        },
+        {
+          value: 'popcorn',
+          image: 'popcorn.svg'
+        },
+        {
+          value: 'bacteria',
+          image: 'bacteria.svg'
+        },
+        {
+          value: 'caries',
+          image: 'caries.svg'
+        }
+      ]
+    },
+    {
+      text: 'Match the Items.',
+      id: '8',
       type: 'match',
       answers: [
         {
-          text: 'Brush Teeth',
           image: 'brush.svg'
         },
         {
-          text: 'Eat Candy',
           image: 'candy.svg'
         },
         {
-          text: 'Floss Daily',
-          image: 'dental-floss.svg'
-        },
-        {
-          text: 'Drink Water',
-          image: 'water.svg'
-        },
-        {
-          text: 'Visit Dentist',
           image: 'dentist.svg'
         },
         {
-          text: 'Bedtime Snacks',
-          image: 'sleep.svg'
-        },
-        {
-          text: 'Sugary Foods',
           image: 'beverage.svg'
         },
         {
-          text: 'Get Exercise',
+          image: 'dental-floss.svg'
+        },
+        {
           image: 'gym.svg'
         },
         {
-          text: 'Brush 2:00',
-          image: 'clock.svg'
+          image: 'dentist.svg'
+        },
+        {
+          image: 'beverage.svg'
+        },
+        {
+          image: 'gym.svg'
+        },
+        {
+          image: 'brush.svg'
+        },
+        {
+          image: 'candy.svg'
+        },
+        {
+          image: 'dental-floss.svg'
         },
       ]
     },
     {
       text: 'Can You Remember the Items?',
-      id: '7',
+      id: '9',
       type: 'memory',
       answers: [
         {
-          text: 'Brush Teeth',
           image: 'brush.svg'
         },
         {
-          text: 'Eat Candy',
           image: 'candy.svg'
         },
         {
-          text: 'Floss Daily',
           image: 'dental-floss.svg'
         },
         {
-          text: 'Drink Water',
           image: 'water.svg'
         },
         {
-          text: 'Visit Dentist',
           image: 'dentist.svg'
         },
         {
-          text: 'Bedtime Snacks',
           image: 'sleep.svg'
         },
         {
-          text: 'Sugary Foods',
           image: 'beverage.svg'
         },
         {
-          text: 'Get Exercise',
           image: 'gym.svg'
         },
         {
-          text: 'Brush 2:00',
           image: 'clock.svg'
         },
-      ]
-    },
-    {
-      text: 'Cavity Math',
-      desc: 'Arrange the icons to find the answer.',
-      id: '8',
-      type: 'calc',
-      variants: [
-        {
-          value: 'clock',
-          image: 'clock.svg'
-        },
-        {
-          value: 'tooth',
-          image: 'tooth.svg'
-        },
-        {
-          value: 'popcorn',
-          image: 'popcorn.svg'
-        },
-        {
-          value: 'bacteria',
-          image: 'bacteria.svg'
-        },
-        {
-          value: 'caries',
-          image: 'caries.svg'
-        }
-      ]
-    },
-    {
-      text: 'Cavity Math',
-      desc: 'Arrange the icons to find the answer.',
-      id: '9',
-      type: 'calc',
-      variants: [
-        {
-          value: 'clock',
-          image: 'clock.svg'
-        },
-        {
-          value: 'tooth',
-          image: 'tooth.svg'
-        },
-        {
-          value: 'popcorn',
-          image: 'popcorn.svg'
-        },
-        {
-          value: 'bacteria',
-          image: 'bacteria.svg'
-        },
-        {
-          value: 'caries',
-          image: 'caries.svg'
-        }
       ]
     },
   ]
