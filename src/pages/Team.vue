@@ -1,12 +1,13 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
     <div class='container'>
-      <div>
-        <h1>Team</h1>
-        <div class="text">
-          <p>A number of “dangerous drugs” have been in the news recently. These reports started to surface when Congress was having hearings about the painkiller, Vioxx.</p>
-          <p>A Food and Drug Administration staff member testified in front of Congress that there are safety concerns about several medications.</p>
-        </div>
+      <h1>Team</h1>
+      <img src="@/assets/uic-school-front.jpg" alt="">
+      <div class="text">
+        <p>801 S Paulina St, Chicago, IL 60612</p>
+        <p>(312) 996-7555</p>
+        <p>Directions</p>
+        <p>Website</p>
       </div>
     </div>
   </NavigationLayout>
