@@ -15,7 +15,7 @@
 
 <script>
 import AnswerIconCard from '@/components/cards/AnswerIconCard'
-import BaseQuestion from '@/components/Questions/BaseQuestion'
+import BaseQuestion from '@/components/questions/BaseQuestion'
 
   export default {
     props: ['question'],

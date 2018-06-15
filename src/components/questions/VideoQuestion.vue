@@ -2,12 +2,7 @@
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
-        <AnswerCard
-          v-for="(answer, index) in questionCard.answers"
-          :answer="answer"
-          :key="index"
-          :selected="answer.selected"
-          @click="handleAnswerClick(answer, question)"/>
+        <object :data="question.link"></object>
       </div>
     </div>
   </BaseQuestion>
@@ -15,7 +10,7 @@
 
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
-import BaseQuestion from '@/components/Questions/BaseQuestion'
+import BaseQuestion from '@/components/questions/BaseQuestion'
 
   export default {
     props: ['question'],
@@ -62,6 +57,7 @@ import BaseQuestion from '@/components/Questions/BaseQuestion'
 </script>
 
 <style lang="scss" scoped>
+
 .answers {
   display: flex;
   flex-wrap: wrap;
