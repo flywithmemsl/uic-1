@@ -5,25 +5,25 @@
     <div class="courses_wrapper">
       <div @click="navigateToCourse" class="course">
         <div class="course_top">
-          <img src="@/assets/answer-img_1.svg" alt="">
+          <img src="@/assets/cavity-prevention.svg" alt="">
           <div class="title">Cavity Prevention</div>
         </div>
       </div>
       <div @click="navigateToCourse" class="course">
         <div class="course_top">
-          <img src="@/assets/answer-img_2.svg" alt="">
+          <img src="@/assets/baby-teeth.svg" alt="">
           <div class="title">Baby Teeth</div>
         </div>
       </div>
       <div @click="navigateToCourse" class="course">
         <div class="course_top">
-          <img src="@/assets/answer-img_3.svg" alt="">
+          <img src="@/assets/proper-brushing.svg" alt="">
           <div class="title">Proper Brushing</div>
         </div>
       </div>
       <div @click="navigateToCourse" class="course">
         <div class="course_top">
-          <img src="@/assets/answer-img.svg" alt="">
+          <img src="@/assets/prenatal.svg" alt="">
           <div class="title">Prenatal Oral Care</div>
         </div>
       </div>
@@ -32,25 +32,25 @@
     <div class="courses_wrapper">
       <div @click="navigateToCourse" class="game">
         <div class="course_top">
-          <img src="@/assets/answer-img_1.svg" alt="">
+          <img src="@/assets/cavity-math.svg" alt="">
           <div class="title">Cavity Math</div>
         </div>
       </div>
       <div @click="navigateToCourse" class="game">
         <div class="course_top">
-          <img src="@/assets/answer-img_2.svg" alt="">
+          <img src="@/assets/sugar.svg" alt="">
           <div class="title">Sugar</div>
         </div>
       </div>
       <div @click="navigateToCourse" class="game">
         <div class="course_top">
-          <img src="@/assets/answer-img_3.svg" alt="">
+          <img src="@/assets/memory.svg" alt="">
           <div class="title">Memory</div>
         </div>
       </div>
       <div @click="navigateToCourse" class="game">
         <div class="course_top">
-          <img src="@/assets/answer-img.svg" alt="">
+          <img src="@/assets/matching.svg" alt="">
           <div class="title">Matching</div>
         </div>
       </div>
