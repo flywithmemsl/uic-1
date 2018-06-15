@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h1>My Courses</h1>
+    <h1>Topics</h1>
     <Switcher :menuNames="menuNames" />
     <div class="courses_wrapper">
       <div @click="navigateToCourse" class="course">
