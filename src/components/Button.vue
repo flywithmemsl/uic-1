@@ -24,8 +24,7 @@
   padding: 18px 22px 18px 22px;
   width: 190px;
   text-align: center;
-  margin: 0 auto;
-  margin-top: 30px;
+  margin: 30px auto;
   color: #FFFFFF;
   box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39)
 }

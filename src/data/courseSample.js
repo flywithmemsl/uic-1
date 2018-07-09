@@ -164,79 +164,30 @@ export default {
       ]
     },
     {
-      text: 'Match the Items.',
+      text: 'Mouth Game',
+      desc: 'Arrange the icons to find the answer.',
       id: '8',
-      type: 'match',
-      answers: [
+      type: 'mouth',
+      variants: [
         {
-          image: 'brush.svg'
+          value: 'donut',
+          image: 'donut.svg'
         },
         {
+          value: 'candy',
           image: 'candy.svg'
         },
         {
-          image: 'dentist.svg'
+          value: 'popcorn',
+          image: 'popcorn.svg'
         },
         {
-          image: 'beverage.svg'
+          value: 'apple',
+          image: 'apple.svg'
         },
         {
-          image: 'dental-floss.svg'
-        },
-        {
-          image: 'gym.svg'
-        },
-        {
-          image: 'dentist.svg'
-        },
-        {
-          image: 'beverage.svg'
-        },
-        {
-          image: 'gym.svg'
-        },
-        {
-          image: 'brush.svg'
-        },
-        {
-          image: 'candy.svg'
-        },
-        {
-          image: 'dental-floss.svg'
-        },
-      ]
-    },
-    {
-      text: 'Can You Remember the Items?',
-      id: '9',
-      type: 'memory',
-      answers: [
-        {
-          image: 'brush.svg'
-        },
-        {
-          image: 'candy.svg'
-        },
-        {
-          image: 'dental-floss.svg'
-        },
-        {
-          image: 'water.svg'
-        },
-        {
-          image: 'dentist.svg'
-        },
-        {
-          image: 'sleep.svg'
-        },
-        {
-          image: 'beverage.svg'
-        },
-        {
-          image: 'gym.svg'
-        },
-        {
-          image: 'clock.svg'
+          value: 'broccoli',
+          image: 'broccoli.svg'
         },
       ]
     },

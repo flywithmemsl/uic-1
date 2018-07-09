@@ -23,7 +23,7 @@
             <div class="name">Lessons</div>
           </div>
         </div>
-        <img @click="$router.push('/cards')" class="download" src="@/assets/download_btn.png" alt="btn">
+        <img @click="$router.push('/course/1')" class="download" src="@/assets/download_btn.png" alt="btn">
       </div>
       <v-touch @swipeup="handleSwipeTop">
         <div class="swipe_up">

@@ -27,13 +27,8 @@
           :question="question"
           @selectAnswer='handelAnswerSelect' />
 
-        <MatchQuestion
-          v-if="question.type === 'match'"
-          :question="question"
-          @selectAnswer='handelAnswerSelect' />
-
-        <MemoryQuestion
-          v-if="question.type === 'memory'"
+        <MouthQuestion
+          v-if="question.type === 'mouth'"
           :question="question"
           @selectAnswer='handelAnswerSelect' />
 
@@ -47,8 +42,7 @@ import CardsQuestion from '@/components/questions/CardsQuestion'
 import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
-import MatchQuestion from '@/components/questions/MatchQuestion'
-import MemoryQuestion from '@/components/questions/MemoryQuestion'
+import MouthQuestion from '@/components/questions/MouthQuestion'
 // data
 import CourseData from '@/data/courseSample'
 
@@ -64,8 +58,7 @@ export default {
     IconsQuestion,
     VideoQuestion,
     CalcQuestion,
-    MatchQuestion,
-    MemoryQuestion
+    MouthQuestion
   },
 
   data () {
