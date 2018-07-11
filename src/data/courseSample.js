@@ -8,81 +8,89 @@ export default {
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'How do we stop bacteria monsters?',
+      text: 'How to Stop the Cavity Monsters.',
       id: '2',
-      type: 'icons',
-      answers: [
-        {
-          text: 'Brush Teeth',
-          image: 'brush.svg'
-        },
-        {
-          text: 'Eat Candy',
-          image: 'candy.svg'
-        },
-        {
-          text: 'Floss Daily',
-          image: 'dental-floss.svg'
-        },
-        {
-          text: 'Drink Water',
-          image: 'water.svg'
-        },
-        {
-          text: 'Visit Dentist',
-          image: 'dentist.svg'
-        },
-        {
-          text: 'Bedtime Snacks',
-          image: 'sleep.svg'
-        },
-        {
-          text: 'Sugary Foods',
-          image: 'beverage.svg'
-        },
-        {
-          text: 'Get Exercise',
-          image: 'gym.svg'
-        },
-        {
-          text: 'Brush 2:00',
-          image: 'clock.svg'
-        },
-      ]
+      type: 'video',
+      link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'How do we get cavaties?',
+      text: 'Brushing Away the Cavity Monsters!',
       id: '3',
       type: 'video',
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'What will you do to prevent the cavity monsters?',
+      text: 'Cavity Math',
       id: '4',
+      type: 'video',
+      link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
+    },
+    {
+      text: 'Stop the cavity monster.',
+      id: '5',
+      type: 'icons',
+      answers: [
+        {
+          text: 'Brush twice a day every day',
+          image: 'brush.svg'
+        },
+        {
+          text: 'Never brush my teeth',
+          image: 'candy.svg'
+        },
+      ]
+    },
+    {
+      text: 'Stop the cavity monster.',
+      id: '6',
+      type: 'icons',
+      answers: [
+        {
+          text: 'Brush after a snack',
+          image: 'brush.svg'
+        },
+        {
+          text: 'Wait until tomorrow',
+          image: 'candy.svg'
+        },
+      ]
+    },
+    {
+      text: 'Stop the cavity monster.',
+      id: '7',
+      type: 'icons',
+      answers: [
+        {
+          text: 'Brush for 2 minutes',
+          image: 'brush.svg'
+        },
+        {
+          text: 'Brush for 1 minute',
+          image: 'candy.svg'
+        },
+      ]
+    },
+    {
+      text: 'Cavity Math',
+      id: '8',
+      type: 'video',
+      link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
+    },
+    {
+      text: 'Good For Me or Good for Cavity Monsters?',
+      id: '9',
       type: 'cards',
       answers: [
         {
           text: 'Brush Teeth',
           image: 'answer-img.svg'
-        },
-        {
-          text: 'Eat Candy',
-          image: 'answer-img_1.svg'
-        },
-        {
-          text: 'Exercise',
-          image: 'answer-img_2.svg'
-        },
-        {
-          text: 'Watch TV',
-          image: 'answer-img_3.svg'
         }
       ]
     },
     {
       text: 'Cavity Math',
       desc: 'Arrange the icons to find the answer.',
-      id: '5',
+      id: '10',
       type: 'calc',
       variants: [
         {
@@ -92,81 +100,13 @@ export default {
         {
           value: 'tooth',
           image: 'tooth.svg'
-        },
-        {
-          value: 'popcorn',
-          image: 'popcorn.svg'
-        },
-        {
-          value: 'bacteria',
-          image: 'bacteria.svg'
-        },
-        {
-          value: 'caries',
-          image: 'caries.svg'
-        }
-      ]
-    },
-    {
-      text: 'Cavity Math 2',
-      desc: 'Arrange the icons to find the answer.',
-      id: '6',
-      type: 'calc',
-      variants: [
-        {
-          value: 'clock',
-          image: 'clock.svg'
-        },
-        {
-          value: 'tooth',
-          image: 'tooth.svg'
-        },
-        {
-          value: 'popcorn',
-          image: 'popcorn.svg'
-        },
-        {
-          value: 'bacteria',
-          image: 'bacteria.svg'
-        },
-        {
-          value: 'caries',
-          image: 'caries.svg'
-        }
-      ]
-    },
-    {
-      text: 'Cavity Math 3',
-      desc: 'Arrange the icons to find the answer.',
-      id: '7',
-      type: 'calc',
-      variants: [
-        {
-          value: 'clock',
-          image: 'clock.svg'
-        },
-        {
-          value: 'tooth',
-          image: 'tooth.svg'
-        },
-        {
-          value: 'popcorn',
-          image: 'popcorn.svg'
-        },
-        {
-          value: 'bacteria',
-          image: 'bacteria.svg'
-        },
-        {
-          value: 'caries',
-          image: 'caries.svg'
         }
       ]
     },
     {
       text: 'Mouth Game',
       desc: 'Arrange the icons to find the answer.',
-      id: '8',
+      id: '11',
       type: 'mouth',
       variants: [
         {
@@ -174,20 +114,8 @@ export default {
           image: 'donut.svg'
         },
         {
-          value: 'candy',
-          image: 'candy.svg'
-        },
-        {
-          value: 'popcorn',
-          image: 'popcorn.svg'
-        },
-        {
           value: 'apple',
           image: 'apple.svg'
-        },
-        {
-          value: 'broccoli',
-          image: 'broccoli.svg'
         },
       ]
     },
