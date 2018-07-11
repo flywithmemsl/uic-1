@@ -12,13 +12,13 @@
           :class="getButtonClassName(1)"
           @click="handleButtonClick(1)"
         >
-          Little Kids
+          I am 8 or younger
         </div>
         <div
           :class="getButtonClassName(2)"
           @click="handleButtonClick(2)"
         >
-          Big Kids
+          I am 9 or older
         </div>
       </div>
       <ComponentButton @click="$router.push('/select-team')">Continue </ComponentButton>
@@ -79,19 +79,21 @@ export default {
 }
 
 .age-button {
-  font-family: 'Gotham';
-  text-transform: uppercase;
-  background-color: #2E4A6E;
+  font-family: 'Zilla Slab', sans-serif;
+  background-color: #278AB5;
   border-radius: 50px;
-  padding: 29px 22px 18px 22px;
+  padding: 18px 22px 18px 22px;
   width: 100%;
   text-align: center;
   margin: 0 auto;
   margin-top: 30px;
   color: #FFFFFF;
+  font-size: 19px;
+  letter-spacing: 0.94px;
+  box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39)
 }
 
 .age-button--selected {
-  background-color: #278ab5;
+  background-color: #32BEA6;
 }
 </style>

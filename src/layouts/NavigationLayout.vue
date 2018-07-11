@@ -1,11 +1,11 @@
 <template>
-  <div class="container" :style="{paddingTop: topImage ? '20px' : '0'}" >
-    <img v-if="topImage" :src="topImage" class="top">
+  <div class="container" >
     <NavigationControls
       :back="back"
       :menu="menu"
       :steps='steps'
       :close='close'
+      :topImage="topImage"
       @menuClick="showMenu = !showMenu"/>
     <slot />
     <transition name="slide-fade">
@@ -33,6 +33,9 @@ export default {
     return {
       showMenu: false
     }
+  },
+  mounted() {
+    console.log(this.topImage)
   }
 }
 </script>

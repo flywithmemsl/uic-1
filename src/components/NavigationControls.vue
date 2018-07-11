@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation">
+  <div class="navigation" :style="{minHeight: topImage ? '25px' : 'initial'}">
     <img @click="$router.go(-1)" v-if="back" src="@/assets/back.png" alt="">
     <!--<div class="steps">-->
       <!--<div v-for="(step, index) in steps" :key="index">-->
@@ -7,6 +7,7 @@
         <!--<img v-else class='step-img' src="@/assets/step-dash.svg" alt="">-->
       <!--</div>-->
     <!--</div>-->
+    <img v-if="topImage" :src="topImage" class="top">
     <img v-if="menu" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
     <img v-if="close" src="@/assets/close-icon.svg" alt="" @click="$emit('closeClick')">
   </div>
@@ -22,7 +23,8 @@ export default {
     'steps': [Array, Object],
     'close': {
       default: false
-    }
+    },
+    'topImage': String
   },
 }
 </script>
@@ -45,9 +47,21 @@ export default {
     flex-flow: row nowrap;
     justify-content: space-between;
     margin-top: 20px;
+    position: relative;
     img {
       height: 17px;
       width: auto;
     }
+
+    .top {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -25%);
+    }
   }
+
+  
 </style>

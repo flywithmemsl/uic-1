@@ -4,11 +4,15 @@
       <div class="cards">
         <img src="@/assets/logo.svg">
       </div>
+
       <div class="content">
         <h1>Welcome</h1>
         <p>University of Illinois School of Dentistry presents a game for you to learn better oral hygiene.</p>
-        <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
+        <div class="button-wrapper">
+          <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
+        </div>
       </div>
+
       <router-link to="/login" class="login">Log In</router-link>
     </div>
   </div>
@@ -74,5 +78,9 @@ p {
 
 .content {
   margin-top: 30px;
+}
+
+.button-wrapper {
+  width: 216px;
 }
 </style>
