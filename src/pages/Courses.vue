@@ -1,58 +1,10 @@
 <template>
-  <NavigationLayout :back="true" :menu="true">
+  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
     <h1>Topics</h1>
-    <Switcher :menuNames="menuNames" />
     <div class="courses_wrapper">
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img src="@/assets/cavity-prevention.svg" alt="">
-          <div class="title">Cavity Prevention</div>
-        </div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img src="@/assets/baby-teeth.svg" alt="">
-          <div class="title">Baby Teeth</div>
-        </div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img src="@/assets/proper-brushing.svg" alt="">
-          <div class="title">Proper Brushing</div>
-        </div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img src="@/assets/prenatal.svg" alt="">
-          <div class="title">Prenatal Oral Care</div>
-        </div>
-      </div>
-    </div>
-    <h3>Activities</h3>
-    <div class="courses_wrapper">
-      <div @click="navigateToCourse" class="game">
-        <div class="course_top">
-          <img src="@/assets/cavity-math.svg" alt="">
-          <div class="title">Cavity Math</div>
-        </div>
-      </div>
-      <div @click="navigateToCourse" class="game">
-        <div class="course_top">
-          <img src="@/assets/sugar.svg" alt="">
-          <div class="title">Sugar</div>
-        </div>
-      </div>
-      <div @click="navigateToCourse" class="game">
-        <div class="course_top">
-          <img src="@/assets/memory.svg" alt="">
-          <div class="title">Memory</div>
-        </div>
-      </div>
-      <div @click="navigateToCourse" class="game">
-        <div class="course_top">
-          <img src="@/assets/matching.svg" alt="">
-          <div class="title">Matching</div>
-        </div>
+      <div class="course" v-for="course in courses" @click="() => navigateToCourse(course.id)" :key="course.id">
+        <div class="course_top" :style="{ background: `url(${course.image}) no-repeat center / cover` }" />
+        <div class="course_bottom">{{course.name}}</div>
       </div>
     </div>
   </NavigationLayout>
@@ -68,10 +20,53 @@ import Switcher from '@/components/CoursesSwitcher'
         {name: 'All', active: true},
         {name: 'Ongoing'},
         {name: 'Completed'}
+      ],
+
+      courses: [
+        {
+          name: 'Cavity Prevention',
+          image: require('@/assets/cavity-prevention.svg'),
+          id: 1
+        },
+        {
+          name: 'Baby Teeth',
+          image: require('@/assets/baby-teeth.svg'),
+          id: 2
+        },
+        {
+          name: 'Proper Brushing',
+          image: require('@/assets/proper-brushing.svg'),
+          id: 3
+        },
+        {
+          name: 'Prenatal Oral Care',
+          image: require('@/assets/prenatal.svg'),
+          id: 4
+        },
+        {
+          name: 'Cavity Math',
+          image: require('@/assets/cavity-math.svg'),
+          id: 5
+        },
+        {
+          name: 'Sugar',
+          image: require('@/assets/sugar.svg'),
+          id: 6
+        },
+        {
+          name: 'Memory',
+          image: require('@/assets/memory.svg'),
+          id: 7
+        },
+        {
+          name: 'Matching',
+          image: require('@/assets/matching.svg'),
+          id: 8
+        }
       ]
     }),
     methods: {
-      navigateToCourse() {
+      navigateToCourse(id) {
         this.$router.push('/details')
       }
     },
@@ -122,16 +117,12 @@ h3 {
 
   width: calc(50% - 10px);
   margin-bottom: 20px;
-  background-color: rgba(46, 74, 110, .5) !important;
   border-radius: 10px;
   font-size: 18px;
   box-shadow: none;
   padding: 5px;
   color: #fff;
 
-  img {
-    width: 100%;
-  }
   .icon {
     width: 40px;
     height: auto;
@@ -203,5 +194,31 @@ h3 {
   font-family: 'Zilla Slab', serif;
   color: rgba(255,255,255,1);
   font-weight: 700;
+}
+
+.course_top {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 130px;
+  height: 130px;
+  position: relative;
+  align-self: center;
+  border: 10px solid #396470;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.course_bottom {
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Zilla Slab', serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 0;
 }
 </style>

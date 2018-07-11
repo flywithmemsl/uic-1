@@ -5996,6 +5996,10 @@ vue-loader@^13.3.0:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.6.0"
 
+vue-radial-progress@^0.2.10:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/vue-radial-progress/-/vue-radial-progress-0.2.10.tgz#b4064c5d0750daf0ee6a9e323b3f79bd2bd6dedc"
+
 vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
@@ -6040,6 +6044,10 @@ vuedraggable@^2.16.0:
 vuelidate@^0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.6.2.tgz#b417f5367407b047a2548119b25db56fe2bd5753"
+
+vuex@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.0.1.tgz#e761352ebe0af537d4bb755a9b9dc4be3df7efd2"
 
 watchpack@^1.4.0:
   version "1.5.0"

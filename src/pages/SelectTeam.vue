@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/uic-school-front.jpg')">
+  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
     <h1>Select Team</h1>
     <div class="content team">
       <base-card

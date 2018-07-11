@@ -13,10 +13,12 @@
     "lodash": "^4.17.10",
     "vue": "^2.5.2",
     "vue-good-wizard": "^1.2.2",
+    "vue-radial-progress": "^0.2.10",
     "vue-router": "^3.0.1",
     "vue-touch": "next",
     "vuedraggable": "^2.16.0",
-    "vuelidate": "^0.6.2"
+    "vuelidate": "^0.6.2",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

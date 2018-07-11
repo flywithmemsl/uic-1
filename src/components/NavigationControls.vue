@@ -7,7 +7,11 @@
         <!--<img v-else class='step-img' src="@/assets/step-dash.svg" alt="">-->
       <!--</div>-->
     <!--</div>-->
-    <img v-if="topImage" :src="topImage" class="top">
+    <div
+      class="top"
+      v-if="topImage"
+      :style="{ backgroundImage: `url(${topImage}` }"
+    />
     <img v-if="menu" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
     <img v-if="close" src="@/assets/close-icon.svg" alt="" @click="$emit('closeClick')">
   </div>
@@ -30,38 +34,44 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-  .steps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-    img.step-img {
-      width: 25px;
-      height: 6px;
-      margin: 0 5px;
-    }
+  img.step-img {
+    width: 25px;
+    height: 6px;
+    margin: 0 5px;
   }
+}
 
-  .navigation {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    margin-top: 20px;
-    position: relative;
-    img {
-      height: 17px;
-      width: auto;
-    }
-
-    .top {
-      width: 40px;
-      height: 40px;
-      border-radius: 100%;
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -25%);
-    }
+.navigation {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+  img {
+    height: 17px;
+    width: auto;
   }
+}
 
+.top {
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow: rgba(255, 255, 255, 0.12 ) 0 0 0 4px;
+  width: 40px;
+  height: 40px;
+  background-position: 50% 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-color: #FFEBAE;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -25%);
+}
   
 </style>

@@ -13,7 +13,9 @@
         </div>
       </div>
 
-      <router-link to="/login" class="login">Log In</router-link>
+      <div class="login-wrapper">
+        <router-link to="/login" class="login">Log In</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -71,9 +73,10 @@ p {
   font-size: 18px;
   color: rgba(255,255,255,0.7);
   text-align: center;
-  margin: 0 auto;
   margin-top: 20px;
-  display: block;
+  display: inline-block;
+  line-height: 25px;
+
 }
 
 .content {
@@ -82,5 +85,10 @@ p {
 
 .button-wrapper {
   width: 216px;
+  margin: 0 auto;
+}
+
+.login-wrapper {
+  text-align: center;
 }
 </style>

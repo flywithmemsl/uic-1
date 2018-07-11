@@ -33,9 +33,6 @@ export default {
     return {
       showMenu: false
     }
-  },
-  mounted() {
-    console.log(this.topImage)
   }
 }
 </script>

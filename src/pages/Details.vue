@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true">
+  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
     <div class="container">
       <div class="course_wrapper">
         <img src='@/assets/course_detail.png' class="background">
@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="scss">
   .course_wrapper {
-    margin-top: 20px;
+    margin-top: 40px;
     position: relative;
     background: #25606B;
     border-radius: 10px;
@@ -136,7 +136,7 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    margin-top: 60px;
+    margin-top: 40px;
 
     .arrow {
       width: 13px;

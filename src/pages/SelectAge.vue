@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .content {
   display: flex;
   align-items: center;
