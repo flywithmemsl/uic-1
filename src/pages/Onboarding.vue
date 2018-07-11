@@ -4,10 +4,9 @@
       <div class="cards">
         <img src="@/assets/logo.svg">
       </div>
-      <div>
+      <div class="content">
         <h1>Welcome</h1>
-        <p>Lorem ipsum dolor sit amet,
-          consectetur adipiscing</p>
+        <p>University of Illinois School of Dentistry presents a game for you to learn better oral hygiene.</p>
         <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
       </div>
       <router-link to="/login" class="login">Log In</router-link>
@@ -52,21 +51,28 @@ h1 {
 }
 
 p {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   font-size: 19px;
   color: rgba(255,255,255,0.7);
+  letter-spacing: 0.2px;
+  line-height: 28px;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .login {
-  height: 36px;
   font-family: 'Gotham';
   text-decoration: underline;
   font-size: 18px;
-  text-decoration: underline;
   color: rgba(255,255,255,0.7);
-  display: inherit;
   text-align: center;
-  margin-top: 80px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: block;
+}
+
+.content {
+  margin-top: 30px;
 }
 </style>
