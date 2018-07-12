@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <div class="cards">
+      <div class="cards" :style="{background: `url(${require('@/assets/artwork.svg')}) no-repeat center 15px / contain`}">
         <img src="@/assets/logo.svg">
       </div>
 
@@ -11,10 +11,6 @@
         <div class="button-wrapper">
           <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
         </div>
-      </div>
-
-      <div class="login-wrapper">
-        <router-link to="/login" class="login">Log In</router-link>
       </div>
     </div>
   </div>
@@ -54,6 +50,7 @@ h1 {
   font-family: 'Zilla Slab', serif;
   color: rgba(255,255,255,1);
   margin: 1rem 0;
+  font-weight: 300;
 }
 
 p {
@@ -80,12 +77,13 @@ p {
 }
 
 .content {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 
 .button-wrapper {
   width: 216px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 
 .login-wrapper {
