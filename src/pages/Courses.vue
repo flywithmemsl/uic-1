@@ -2,8 +2,17 @@
   <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
     <h1>Topics</h1>
     <div class="courses_wrapper">
-      <div class="course" v-for="course in courses" @click="() => navigateToCourse(course.id)" :key="course.id">
-        <div class="course_top" :style="{ background: `url(${course.image}) no-repeat center / cover` }" />
+      <div v-for="course in courses" class="course" @click="() => navigateToCourse(course.id)" :key="course.id">
+        <radial-progress-bar
+          :diameter="145"
+          :totalSteps="10"
+          :completedSteps="5"
+          :startColor="'#87DBA2'"
+          :stopColor="'#87DBA2'"
+          :innerStrokeColor="'#2E5C69'"
+        >
+          <div class="course_top" :style="{ background: `url(${course.image}) no-repeat center / cover` }" />
+        </radial-progress-bar>
         <div class="course_bottom">{{course.name}}</div>
       </div>
     </div>
@@ -13,6 +22,7 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
+import RadialProgressBar from 'vue-radial-progress'
 
   export default {
     data: () => ({
@@ -72,7 +82,8 @@ import Switcher from '@/components/CoursesSwitcher'
     },
     components: {
       Switcher,
-      NavigationLayout
+      NavigationLayout,
+      RadialProgressBar
     }
   }
 </script>
@@ -104,24 +115,29 @@ h3 {
 .courses_wrapper {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-
 }
 
 .course {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: center;
   position: relative;
 
-  width: calc(50% - 10px);
+  width: 50%;
   margin-bottom: 20px;
   border-radius: 10px;
   font-size: 18px;
   box-shadow: none;
   padding: 5px;
   color: #fff;
+
+  &:first-child,
+  &:last-child {
+    width: 100%;
+  }
 
   .icon {
     width: 40px;
@@ -199,11 +215,10 @@ h3 {
 .course_top {
   border-radius: 50%;
   overflow: hidden;
-  width: 130px;
-  height: 130px;
+  width: 116px;
+  height: 116px;
   position: relative;
   align-self: center;
-  border: 10px solid #396470;
 
   img {
     position: absolute;
