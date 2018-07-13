@@ -3,7 +3,8 @@
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
-      :finalStepLabel="'Next'"
+      :finalStepLabel="'Continue'"
+      nextStepLabel="Continue"
       :onNext="nextClicked">
       <div :slot="question.id" :key="question.id" v-for="question in curse.questions">
 
@@ -156,15 +157,30 @@ export default {
 
       .wizard__next,
       .final-step {
-        width: 100%;
         position: fixed;
-        background: #278AB5;
-        box-shadow: 0 -1px 22px 0 rgba(52,84,122,0.08);
-        height: 50px;
         bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Zilla Slab';
+        font-weight: 300;
+        font-size: 19px;
+        height: 50px;
+        text-align: center;
+        letter-spacing: 0.94px;
+
+        background-color: #278ab5;
+        border-radius: 100px;
+        margin: 30px auto;
+        color: #FFFFFF;
+        box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
+        width: 300px;
       }
 
       .pull-left {
+        display: none;
+      }
+
+      .wizard__next .vgw-icon {
         display: none;
       }
     }
