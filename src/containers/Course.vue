@@ -6,7 +6,7 @@
       :finalStepLabel="'Continue'"
       nextStepLabel="Continue"
       :onNext="nextClicked">
-      <div :slot="question.id" :key="question.id" v-for="question in curse.questions">
+      <div :slot="question.id" :key="question.id" v-for="(question, index) in curse.questions">
 
         <CardsQuestion
           v-if="question.type === 'cards'"
@@ -33,7 +33,10 @@
           :question="question"
           @selectAnswer='handelAnswerSelect' />
 
+        <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
       </div>
+
+     
     </vue-good-wizard>
   </div>
 </template>
@@ -73,18 +76,25 @@ export default {
     },
 
     steps () {
-      return this.curse.questions.map((q) => {
+      return this.curse.questions.map((q, index) => {
         return {
           label: q.text,
-          slot: q.id
+          slot: q.id,
+          nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null
         }
       })
     }
   },
 
+  mounted() {
+  },
+
+  updated() {
+  },
+
   methods: {
-    nextClicked(currentPage) {
-      console.log(this.$refs.wizard)
+    nextClicked (currentPage) {
+      
       if (this.steps.length - 1 === currentPage) {
         this.$router.push('/congrats')
       } else {
@@ -185,5 +195,18 @@ export default {
       }
     }
   }
+}
+
+.next-label {
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  font-family: 'Zilla Slab';
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 </style>

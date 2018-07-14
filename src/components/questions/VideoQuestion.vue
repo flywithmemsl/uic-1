@@ -124,7 +124,7 @@ export default {
   box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
   position: absolute;
   z-index: 10;
-  // pointer-events: none;
+  pointer-events: none;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
