@@ -3,7 +3,7 @@
     <div class="question-content" slot="questionContent">
       <div class="answers">
         <!-- <object class="video" :data="question.link"></object> -->
-       
+
         <div class="player">
           <youtube
             :video-id="videoId"
@@ -11,11 +11,13 @@
             player-height="100%"
             @ready="onVideoReady"
             @buffering="onVideoStarts"
+            @ended="onVideoEnded"
+            ref="player"
           >
           </youtube>
-          <div v-if="isStartButtonVisible" class="button">
+          <div v-if="isStartButtonVisible" @click="restartVideo" class="button">
             <div class="icon" :style="{background: `url(${require('@/assets/play.png')}) no-repeat center / contain`}" />
-            <div class="text">Watch Me</div>
+            <div class="text">{{ buttonText }}</div>
           </div>
         </div>
       </div>
@@ -40,7 +42,8 @@ export default {
     return {
       questionCard: this.question || {},
       videoId: this.$youtube.getIdFromURL(this.question.link),
-      isStartButtonVisible: false
+      isStartButtonVisible: false,
+      buttonText: 'Watch Me'
     }
   },
 
@@ -71,11 +74,21 @@ export default {
       this.questionCard.answers.find((a) => a.text === answer.text).selected = true
       this.$emit('selectAnswer')
     },
-    onVideoReady () {
+    onVideoReady (event) {
       this.isStartButtonVisible = true
     },
     onVideoStarts () {
       this.isStartButtonVisible = false
+    },
+    onVideoEnded() {
+      this.buttonText = 'Watch Again'
+      this.onVideoReady()
+    },
+    restartVideo() {
+        this.$refs.player.player.loadVideoByUrl({
+        mediaContentUrl: this.question.link,
+        startSeconds: 0
+      })
     }
   }
 }
@@ -124,7 +137,6 @@ export default {
   box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
   position: absolute;
   z-index: 10;
-  pointer-events: none;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
