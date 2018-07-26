@@ -24,4 +24,24 @@ export default {
     border: 2px solid #259A86;
     box-shadow: 0 2px 3px 0 rgba(31,49,74,0.10);
   }
+
+  .image-1 {
+    background: #FF6D7F;
+  }
+
+  .image-2 {
+    background: #278AB5;
+  }
+
+  .image-3 {
+    background: #87DBA2;
+  }
+
+  .image-4 {
+    background: #FFEBAE;
+  }
+
+  .image-5 {
+    background: #32BEA6;
+  }
 </style>

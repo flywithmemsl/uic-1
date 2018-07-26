@@ -2,49 +2,13 @@
   <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
     <h1>Select Team</h1>
     <div class="content team">
-      <base-card
-        :class="getButtonClassName(1)"
-        @click="handleButtonClick(1)">
-        <div class="image">
-          <img class="card-team-photo" src="@/assets/uic-school-front.jpg" />
+      <base-card v-for="(item, index) in team" :key="item.title"
+        :class="getButtonClassName(index + 1)"
+        @click="handleButtonClick(index + 1)">
+        <div :class="'image image-' + (index+1)">
+          <img class="card-team-photo" :src="require(`@/assets/${item.img}`)" />
         </div>
-        <div class="title">UIC School of Dentistry</div>
-      </base-card>
-
-      <base-card
-        :class="getButtonClassName(2)"
-        @click="handleButtonClick(2)">
-        <div class="image">
-          <img class="card-team-photo" src="@/assets/team-2.jpg" />
-        </div>
-        <div class="title">Chicago Smiles</div>
-      </base-card>
-
-      <base-card
-        :class="getButtonClassName(3)"
-        @click="handleButtonClick(3)">
-        <div class="image">
-          <img class="card-team-photo" src="@/assets/team-3.jpg" />
-        </div>
-        <div class="title">Image Dental</div>
-      </base-card>
-
-      <base-card
-        :class="getButtonClassName(4)"
-        @click="handleButtonClick(4)">
-        <div class="image">
-          <img class="card-team-photo" src="@/assets/team-4.jpg" />
-        </div>
-        <div class="title">East Erie Dental</div>
-      </base-card>
-
-      <base-card
-        :class="getButtonClassName(5)"
-        @click="handleButtonClick(5)">
-        <div class="image">
-          <img class="card-team-photo" src="@/assets/team-5.jpg" />
-        </div>
-        <div class="title">Stone Dental Group</div>
+        <div class="title">{{ item.title }}</div>
       </base-card>
 
       <!-- <base-card @click="goToRoute('/courses')">
@@ -91,11 +55,12 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 import BaseCard from '@/components/cards/BaseCard'
+import selectATeam from '@/data/selectATeam'
 
 export default {
   data () {
     return {
-      selected: null
+      selected: null,
     }
   },
   methods: {
@@ -110,6 +75,11 @@ export default {
     BaseCard,
     NavigationLayout,
     ComponentButton
+  },
+  computed: {
+    team() {
+      return selectATeam
+    }
   }
 }
 </script>
@@ -122,25 +92,39 @@ export default {
 }
 .team {
   .card {
+    display: flex;
+    flex-flow: row nowrap;
+
     margin-bottom: 15px;
     overflow: hidden;
     margin: 7.5px;
     cursor: pointer;
     width: 100%;
 
+    .image {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+    }
+
     img {
       &.card-team-photo {
-        float: left;
+        display: block;
         width: 100px;
-        padding-right: 10px;
+        height: 60px;
       }
     }
     .title {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+
       font-family: 'Zilla Slab';
       font-size: 20px;
       color: #FFFFFF;
       letter-spacing: 0;
-      padding-top: 15px;
+      padding-left: 10px;
+      padding-bottom: 2px;
     }
   }
 }
