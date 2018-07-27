@@ -1,9 +1,9 @@
 <template>
-  <BaseCard @click="$emit('click')" :selected="selected">
-    <img :src="image" alt="">
-    <div class="info">
-      <div class="text">{{answer.text}}</div>
+  <BaseCard @click="$emit('click')" :selected="selected" class="answer-card">
+    <div class="image">
+      <img class="card-photo" :src="image" />
     </div>
+    <div class="title">{{ answer.text }}</div>
   </BaseCard>
 </template>
 
@@ -29,19 +29,43 @@ export default {
 </script>
 
 <style scoped lang="scss">
-img {
+.answer-card {
+  display: flex;
+  flex-flow: row nowrap;
+
+  margin-bottom: 15px;
+  overflow: hidden;
+  margin: 7.5px 0 !important;
+  cursor: pointer;
   width: 100%;
-  max-width: 50px;
-}
 
-.text {
-  font-family: 'Zilla Slab';
-  font-size: 16px;
-  color: #FFFFFF;
-  letter-spacing: 0;
-  text-align: center;
+  .image {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100px;
+    padding: 12px;
+    justify-content: center;
+  }
 
-  padding: 16px 0px;
-  padding-bottom: 0;
+  .card-photo {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+  .title {
+    padding-left: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    font-family: 'Zilla Slab';
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    text-align: left;
+
+    padding-bottom: 0;
+  }
 }
 </style>

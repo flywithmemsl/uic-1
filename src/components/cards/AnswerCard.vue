@@ -1,9 +1,9 @@
 <template>
-  <BaseCard @click="$emit('click')" :selected="selected">
-    <img :src="image" alt="">
-    <div class="info">
-      <div class="text">{{answer.text}}</div>
+  <BaseCard @click="$emit('click')" :selected="selected" >
+    <div class="image">
+      <img :src="image" alt="">
     </div>
+    <div class="text">{{answer.text}}</div> 
   </BaseCard>
 </template>
 
@@ -16,6 +16,12 @@ export default {
   props: ['answer', 'selected'],
   components: {
     BaseCard
+  },
+
+  methods: {
+    getButtonClassName (number) {
+      return ['card', number === this.selected ? 'card--selected' : '']
+    }
   },
 
   computed: {

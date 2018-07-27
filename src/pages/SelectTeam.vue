@@ -10,42 +10,6 @@
         </div>
         <div class="title">{{ item.title }}</div>
       </base-card>
-
-      <!-- <base-card @click="goToRoute('/courses')">
-        <div class="image">
-          <img class="card-photo" src="@/assets/uic-school-front.jpg" />
-        </div>
-        <div class="title">Strobel Dentistry</div>
-      </base-card>
-
-      <base-card @click="goToRoute('/courses')">
-        <div class="image">
-          <img class="card-photo" src="@/assets/uic-school-front.jpg" />
-        </div>
-        <div class="title">Chicago Style Smiles</div>
-      </base-card>
-
-      <base-card @click="goToRoute('/courses')">
-        <div class="image">
-          <img class="card-photo" src="@/assets/uic-school-front.jpg" />
-        </div>
-        <div class="title">Lakeview Smiles</div>
-      </base-card>
-
-      <base-card @click="goToRoute('/courses')">
-        <div class="image">
-          <img class="card-photo" src="@/assets/uic-school-front.jpg" />
-        </div>
-        <div class="title">Big Smile Dental</div>
-      </base-card>
-
-      <base-card @click="goToRoute('/courses')">
-        <div class="image">
-          <img class="card-photo" src="@/assets/uic-school-front.jpg" />
-        </div>
-        <div class="title">Chicago Smile Design</div>
-      </base-card> -->
-
       <ComponentButton @click="$router.push('/courses')">Continue </ComponentButton>
     </div>
   </NavigationLayout>

@@ -2,12 +2,12 @@
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
-        <AnswerIconCard
-          v-for="(answer, index) in questionCard.answers"
-          :answer="answer"
-          :key="index"
-          :selected="answer.selected"
-          @click="handleAnswerClick(answer, question)"/>
+        <div class="answer" v-for="(answer, index) in questionCard.answers" :key="index">
+          <AnswerIconCard
+            :answer="answer"
+            :selected="answer.selected"
+            @click="handleAnswerClick(answer, question)"/>
+        </div>
       </div>
     </div>
   </BaseQuestion>
@@ -63,29 +63,35 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 
 <style lang="scss" scoped>
 .answers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-
   .card {
-    flex: 1 1 0%;
-    margin: 6px;
-    overflow: hidden;
-    margin-bottom: 15px;
-    min-width: 93px;
-    max-width: 31%;
-    cursor: pointer;
-    align-self: flex-start;
-    text-align: center;
-    padding: 15px;
+    border: none;
+  }
+}
 
-    /deep/ .text {
-      padding: 0;
+.answer {
+  &:not(:last-child) {
+    &::after {
+      content: 'or';
+      width: 100%;
+      text-align: center;
+      display: block;
+      margin: 21px 0;
+      font-family: ZillaSlab-Bold;
+      font-size: 26px;
+      color: #FFFFFF;
+      letter-spacing: 0;
     }
 
-    /deep/ img {
-      height: 60px;
+    /deep/ .image {
+      background: #FF6D7F;
     }
   }
+
+  &:last-child {
+    /deep/ .image {
+      background: #278AB5;
+    }
+  }
+
 }
 </style>
