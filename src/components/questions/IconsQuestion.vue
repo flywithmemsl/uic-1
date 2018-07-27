@@ -9,7 +9,7 @@
             @click="handleAnswerClick(answer, question)"/>
         </div>
       </div>
-      <popup />
+      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>
@@ -20,7 +20,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 import Popup from '@/components/Popup'
 
   export default {
-    props: ['question'],
+    props: ['question', 'openPopupFalse', 'openPopupTrue'],
     components: {
       BaseQuestion,
       AnswerIconCard,

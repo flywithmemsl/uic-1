@@ -5,7 +5,9 @@
       :steps="steps"
       :finalStepLabel="'Continue'"
       nextStepLabel="Continue"
-      :onNext="nextClicked">
+      :onNext="nextClicked"
+    >
+
       <div :slot="question.id" :key="question.id" v-for="(question, index) in curse.questions">
         <CardsQuestion
           v-if="question.type === 'cards'"
@@ -20,7 +22,10 @@
         <IconsQuestion
           v-if="question.type === 'icons'"
           :question="question"
-          @selectAnswer='handelAnswerSelect' />
+          @selectAnswer="handelAnswerSelect"
+          :openPopupFalse="openPopupFalse"
+          :openPopupTrue="openPopupTrue"
+           />
 
         <CalcQuestion
           v-if="question.type === 'calc'"
@@ -64,8 +69,25 @@ export default {
 
   data () {
     return {
-      isAnswerCorrect: null
+      isAnswerCorrect: null,
+      openPopupFalse: false,
+      openPopupTrue: false
     }
+  },
+
+  mounted() {
+    this.$root.$on('nextSlide', () => {
+      this.isAnswerCorrect = null;
+      this.$refs.wizard.goNext(true);
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+    })
+
+    this.$root.$on('thisSlide', () => {
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+    })
   },
 
   computed: {
@@ -85,20 +107,16 @@ export default {
     }
   },
 
-  mounted() {
-  },
-
-  updated() {
-  },
-
   methods: {
     nextClicked (currentPage) {
       if (this.isAnswerCorrect !== null) {
         if (!this.checkAnswer()) {
-          return alert('is not correct')
+          this.openPopupFalse = true
+          return false
         }
         else {
-          alert('correct')
+          this.openPopupTrue = true
+          return false
         }
       }
       if (this.steps.length - 1 === currentPage) {
@@ -121,7 +139,7 @@ export default {
 
     handelAnswerSelect (isCorrect) {
       this.isAnswerCorrect = isCorrect
-    }
+    },
   }
 }
 </script>

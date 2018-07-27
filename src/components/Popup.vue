@@ -1,20 +1,41 @@
 <template>
-  <div class="popup">
-    <div class="container">
-      <div class="title">
-        <div class="img">
-
+  <div>
+    <div class="popup" v-if="openPopupTrue">
+      <div class="container">
+        <div class="title">
+          <div class="img-wrapper img-wrapper__true">
+            <div class="img__true">
+            </div>
+          </div>
+          <div class="title-text">
+            You are correct!
+          </div>
         </div>
-        <div class="title-text">
-          You are correct!
+        <div class="description">
+          Brushing your teeth twice a day is the best way to stop those nasty cavity monsters.
         </div>
+        <component-button :popup="true" @click="toNextSlide">
+          Continue
+        </component-button>
       </div>
-      <div class="description">
-        Brushing your teeth twice a day is the best way to stop those nasty cavity monsters.
+    </div>
+    <div class="popup" v-if="openPopupFalse">
+      <div class="container">
+        <div class="title">
+          <div class="img-wrapper img-wrapper__false">
+            <div class="img__false">
+            </div>
+          </div>
+          <div class="title-text title-text__false">
+            Uh-oh! <br />
+            The cavity monster <br />
+            is coming!
+          </div>
+        </div>
+        <component-button :popup="true" @click="toThisSlide">
+          Try again
+        </component-button>
       </div>
-      <component-button>
-        Play Again
-      </component-button>
     </div>
   </div>
 </template>
@@ -22,8 +43,23 @@
 <script>
 import ComponentButton from '@/components/Button'
   export default {
+    props: {
+      openPopupTrue: Boolean,
+      openPopupFalse: Boolean
+    },
+
     components: {
       ComponentButton
+    },
+
+    methods: {
+      toNextSlide() {
+        this.$root.$emit('nextSlide');
+      },
+
+      toThisSlide() {
+        this.$root.$emit('thisSlide');
+      }
     }
   }
 </script>
@@ -50,16 +86,73 @@ import ComponentButton from '@/components/Button'
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 90%;
+  max-width: 295px;
+  width: 100%;
   padding: 23px;
+
   background: #25606B;
+  border-radius: 10px;
 }
 
-.img {
+.img-wrapper {
   width: 50px;
   height: 50px;
+  margin: 0 auto;
+
   border-radius: 50%;
+}
+
+.img-wrapper__true {
+  background: #87DBA2;
+}
+
+.img-wrapper__false {
+  background: #FF6D7F;
+}
+
+.img__true {
   overflow: hidden;
-  background: url('../assets/account-img.jpg') no-repeat center/contain;
+  width: 34px;
+  height: 50px;
+  margin: 0 auto;
+
+  background: url('../assets/avatar.png') no-repeat bottom/contain;
+}
+
+.img__false {
+  overflow: hidden;
+  width: 34px;
+  height: 50px;
+  margin: 0 auto;
+
+  background: url('../assets/monster.png') no-repeat bottom/contain;
+}
+
+.title-text {
+  margin-top: 8px;
+  margin-bottom: 26px;
+
+  font-size: 23px;
+  text-align: center;
+}
+
+.title-text__false {
+  margin-top: 30px;
+  margin-bottom: 48px;
+}
+
+.description {
+  margin-bottom: 53px;
+
+  font-family: 'Lato';
+  font-weight: 300;
+}
+
+.popup .button {
+  max-width: 165px;
+  padding: 8px 10px 8px 10px;
+  margin: 0 auto 0 auto;
+
+  font-size: 18px;
 }
 </style>
