@@ -47,6 +47,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
           return {
             image: a.image,
             text: a.text,
+            isCorrect: a.isCorrect,
             selected: false
           }
         })
@@ -55,7 +56,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
       handleAnswerClick (answer) {
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer')
+        this.$emit('selectAnswer', answer.isCorrect)
       }
     }
   }

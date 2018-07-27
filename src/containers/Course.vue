@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="curse-container">
     <vue-good-wizard
       ref="wizard"
@@ -66,7 +66,9 @@ export default {
   },
 
   data () {
-    return {}
+    return {
+      isAnswerCorrect: null
+    }
   },
 
   computed: {
@@ -94,7 +96,14 @@ export default {
 
   methods: {
     nextClicked (currentPage) {
-      
+      if (this.isAnswerCorrect !== null) {
+        if (!this.checkAnswer()) {
+          return alert('is not correct')
+        }
+        else {
+          alert('correct')
+        }
+      }
       if (this.steps.length - 1 === currentPage) {
         this.$router.push('/congrats')
       } else {
@@ -102,7 +111,20 @@ export default {
       }
     },
 
-    handelAnswerSelect () {}
+    checkAnswer () {
+      if (this.isAnswerCorrect) {
+        this.isAnswerCorrect = null
+        return true
+      }
+      else {
+        this.isAnswerCorrect = null
+        return false
+      }
+    },
+
+    handelAnswerSelect (isCorrect) {
+      this.isAnswerCorrect = isCorrect
+    }
   }
 }
 </script>

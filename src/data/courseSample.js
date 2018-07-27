@@ -32,11 +32,13 @@ export default {
       answers: [
         {
           text: 'Brush twice a day every day',
-          image: 'brush.svg'
+          image: 'brush.svg',
+          isCorrect: true
         },
         {
           text: 'Never brush my teeth',
-          image: 'candy.svg'
+          image: 'candy.svg',
+          isCorrect: false
         },
       ]
     },
@@ -47,11 +49,13 @@ export default {
       answers: [
         {
           text: 'Brush after a snack',
-          image: 'brush.svg'
+          image: 'brush.svg',
+          isCorrect: true
         },
         {
           text: 'Wait until tomorrow',
-          image: 'candy.svg'
+          image: 'candy.svg',
+          isCorrect: false
         },
       ]
     },
@@ -62,11 +66,13 @@ export default {
       answers: [
         {
           text: 'Brush for 2 minutes',
-          image: 'brush.svg'
+          image: 'brush.svg',
+          isCorrect: true
         },
         {
           text: 'Brush for 1 minute',
-          image: 'candy.svg'
+          image: 'candy.svg',
+          isCorrect: false
         },
       ]
     },
