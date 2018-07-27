@@ -9,6 +9,7 @@
             @click="handleAnswerClick(answer, question)"/>
         </div>
       </div>
+      <popup />
     </div>
   </BaseQuestion>
 </template>
@@ -16,12 +17,14 @@
 <script>
 import AnswerIconCard from '@/components/cards/AnswerIconCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
+import Popup from '@/components/Popup'
 
   export default {
     props: ['question'],
     components: {
       BaseQuestion,
-      AnswerIconCard
+      AnswerIconCard,
+      Popup
     },
 
     data () {

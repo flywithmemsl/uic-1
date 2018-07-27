@@ -1,4 +1,4 @@
-<template> 
+<template>
   <div class="curse-container">
     <vue-good-wizard
       ref="wizard"
@@ -7,7 +7,6 @@
       nextStepLabel="Continue"
       :onNext="nextClicked">
       <div :slot="question.id" :key="question.id" v-for="(question, index) in curse.questions">
-
         <CardsQuestion
           v-if="question.type === 'cards'"
           :question="question"
@@ -35,8 +34,6 @@
 
         <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
       </div>
-
-     
     </vue-good-wizard>
   </div>
 </template>
