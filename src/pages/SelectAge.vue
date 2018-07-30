@@ -4,7 +4,7 @@
     <div class="content">
       <div
         class="avatar"
-        :style="{ backgroundImage: `url(${require('@/assets/characters/character-girl-3.png')}` }"
+        :style="{ backgroundImage: `url(${$store.state.character})` }"
       >
       </div>
       <div class="age-buttons">
@@ -47,6 +47,10 @@ export default {
   components: {
     NavigationLayout,
     ComponentButton
+  },
+
+  mounted() {
+    console.log(this.$store.state)
   }
 }
 </script>

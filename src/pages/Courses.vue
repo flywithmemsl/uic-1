@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
+  <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
     <h1>Topics</h1>
     <div class="courses_wrapper">
       <div v-for="course in courses" class="course" @click="() => navigateToCourse(course.id)" :key="course.id">

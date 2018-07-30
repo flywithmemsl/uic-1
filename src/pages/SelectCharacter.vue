@@ -22,13 +22,13 @@
       </div>
     </div>
     <div class="continue-button">
-      <ComponentButton @click="$router.push('/select-age')">Continue</ComponentButton>
+      <ComponentButton @click="buttonHandler">Continue</ComponentButton>
     </div>
   </NavigationLayout>
 </template>
 
 <script>
-import { isFinite, inRange, chunk } from 'lodash'
+import { isFinite, chunk } from 'lodash'
 import NavigationLayout from '@/layouts/NavigationLayout'
 
 import CharacterCard from '@/components/cards/CharacterCard'
@@ -115,11 +115,21 @@ export default {
       }
     },
     selectCard (value) {
+      this.character = value
       if (this.step === 1) {
         this.value.gender = value
       } else if (this.step === 2) {
         return this.value.character = value
       }
+    },
+    buttonHandler(value) {
+      this.cards.gender.map((element) => {
+        if (element.value === this.character) {
+          this.$store.commit('setCharacter', element.src)
+        }
+      })
+      console.log(this.$store.state.character)
+      this.$router.push('/select-age')
     }
   }
 }
