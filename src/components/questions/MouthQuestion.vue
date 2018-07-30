@@ -168,7 +168,7 @@
   }
 
   /deep/ img {
-    padding: 17px 0px;
+    // padding: 17px 0px;
     width: 30px;
   }
 }

@@ -199,5 +199,10 @@
     padding: 17px 0px;
     width: 30px;
   }
+
+  /deep/ .image img {
+    height: auto;
+    width: auto;
+  }
 }
 </style>
