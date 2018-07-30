@@ -19,6 +19,8 @@ import AnswerIconCard from '@/components/cards/AnswerIconCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import Popup from '@/components/Popup'
 
+import { events } from '@/helpers/events'
+
   export default {
     props: ['question', 'openPopupFalse', 'openPopupTrue', 'isQuestion'],
     components: {
@@ -43,7 +45,8 @@ import Popup from '@/components/Popup'
     },
 
     mounted() {
-      this.$emit('isQuestionHandler', true, 'Check')
+      this.$emit('isQuestionHandler', true, 'Check');
+      events.$on('dropAnswer', this.dropActiveAnswers)
     },
 
     methods: {

@@ -26,8 +26,7 @@
           @selectAnswer="handelAnswerSelect"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
-          @isQuestionHandler="isQuestionHandler"
-           />
+          @isQuestionHandler="isQuestionHandler" />
 
         <CalcQuestion
           v-if="question.type === 'calc'"
@@ -53,6 +52,8 @@ import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 // data
 import CourseData from '@/data/courseSample'
+// events
+import { events } from '@/helpers/events'
 
 export default {
   name: 'CourseContainer',
@@ -80,7 +81,7 @@ export default {
   },
 
   mounted() {
-    this.$root.$on('nextSlide', () => {
+    events.$on('nextSlide', () => {
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.$refs.wizard.goNext(true);
@@ -88,7 +89,7 @@ export default {
       this.openPopupTrue = false;
     })
 
-    this.$root.$on('thisSlide', () => {
+    events.$on('thisSlide', () => {
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;

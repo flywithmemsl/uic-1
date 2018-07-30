@@ -42,6 +42,8 @@
 
 <script>
 import ComponentButton from '@/components/Button'
+import { events } from '@/helpers/events'
+
   export default {
     props: {
       openPopupTrue: Boolean,
@@ -54,11 +56,12 @@ import ComponentButton from '@/components/Button'
 
     methods: {
       toNextSlide() {
-        this.$root.$emit('nextSlide');
+        events.$emit('nextSlide');
       },
 
       toThisSlide() {
-        this.$root.$emit('thisSlide');
+        events.$emit('dropAnswer')
+        events.$emit('thisSlide');
       }
     }
   }
