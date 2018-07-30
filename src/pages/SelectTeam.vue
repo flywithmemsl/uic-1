@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
+  <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
     <h1>Select Team</h1>
     <div class="content team">
       <base-card v-for="(item, index) in team" :key="item.title"

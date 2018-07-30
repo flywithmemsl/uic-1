@@ -37,6 +37,28 @@
         </component-button>
       </div>
     </div>
+    <div class="popup popup-back" v-if="false">
+      <div class="container">
+        <div class="title">
+          <div class="img-wrapper img-wrapper__false">
+            <div class="img__false">
+            </div>
+          </div>
+          <div class="title-text title-text__false">
+            Are you sure you <br />
+            want to leave?
+          </div>
+        </div>
+        <div class="buttons-wrapper">
+          <component-button :popup="true" @click="toThisSlide">
+              yes
+          </component-button>
+          <component-button :popup="true" @click="closePopup">
+              no
+          </component-button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,6 +84,10 @@ import { events } from '@/helpers/events'
       toThisSlide() {
         events.$emit('dropAnswer')
         events.$emit('thisSlide');
+      },
+
+      closePopup() {
+
       }
     }
   }
@@ -151,11 +177,20 @@ import { events } from '@/helpers/events'
   font-weight: 300;
 }
 
+.buttons-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .popup .button {
   max-width: 165px;
   padding: 8px 10px 8px 10px;
   margin: 0 auto 0 auto;
 
   font-size: 18px;
+}
+
+.popup-back .button:first-child {
+  margin-right: 10px;
 }
 </style>

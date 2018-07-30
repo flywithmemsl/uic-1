@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true" :topImage="require('@/assets/characters/character-girl-3.png')">
+  <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
     <div class="container">
       <div class="course_wrapper">
         <img src='@/assets/course_detail.png' class="background">
