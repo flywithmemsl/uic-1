@@ -3,8 +3,8 @@
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
-      :finalStepLabel="'Continue'"
-      nextStepLabel="Continue"
+      :finalStepLabel="buttonText"
+      :nextStepLabel="buttonText"
       :onNext="nextClicked"
     >
 
@@ -17,7 +17,8 @@
         <VideoQuestion
           v-if="question.type === 'video'"
           :question="question"
-          @selectAnswer='handelAnswerSelect' />
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler" />
 
         <IconsQuestion
           v-if="question.type === 'icons'"
@@ -25,6 +26,7 @@
           @selectAnswer="handelAnswerSelect"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
+          @isQuestionHandler="isQuestionHandler"
            />
 
         <CalcQuestion
@@ -71,12 +73,15 @@ export default {
     return {
       isAnswerCorrect: null,
       openPopupFalse: false,
-      openPopupTrue: false
+      openPopupTrue: false,
+      isQuestion: false,
+      buttonText: 'Continue'
     }
   },
 
   mounted() {
     this.$root.$on('nextSlide', () => {
+      this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.$refs.wizard.goNext(true);
       this.openPopupFalse = false;
@@ -84,6 +89,7 @@ export default {
     })
 
     this.$root.$on('thisSlide', () => {
+      this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
@@ -109,6 +115,7 @@ export default {
 
   methods: {
     nextClicked (currentPage) {
+      if (this.isQuestion) return false
       if (this.isAnswerCorrect !== null) {
         if (!this.checkAnswer()) {
           this.openPopupFalse = true
@@ -140,6 +147,11 @@ export default {
     handelAnswerSelect (isCorrect) {
       this.isAnswerCorrect = isCorrect
     },
+
+    isQuestionHandler(bool, buttonText) {
+      this.isQuestion = bool
+      this.buttonText = buttonText
+    }
   }
 }
 </script>
