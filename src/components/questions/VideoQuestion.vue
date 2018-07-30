@@ -90,6 +90,10 @@ export default {
         startSeconds: 0
       })
     }
+  },
+
+  mounted() {
+    this.$emit('isQuestionHandler', false, 'Continue')
   }
 }
 </script>

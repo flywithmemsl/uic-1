@@ -1,13 +1,14 @@
-<template> 
+<template>
   <div class="curse-container">
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
-      :finalStepLabel="'Continue'"
-      nextStepLabel="Continue"
-      :onNext="nextClicked">
-      <div :slot="question.id" :key="question.id" v-for="(question, index) in curse.questions">
+      :finalStepLabel="buttonText"
+      :nextStepLabel="buttonText"
+      :onNext="nextClicked"
+    >
 
+      <div :slot="question.id" :key="question.id" v-for="(question, index) in curse.questions">
         <CardsQuestion
           v-if="question.type === 'cards'"
           :question="question"
@@ -16,12 +17,16 @@
         <VideoQuestion
           v-if="question.type === 'video'"
           :question="question"
-          @selectAnswer='handelAnswerSelect' />
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler" />
 
         <IconsQuestion
           v-if="question.type === 'icons'"
           :question="question"
-          @selectAnswer='handelAnswerSelect' />
+          @selectAnswer="handelAnswerSelect"
+          :openPopupFalse="openPopupFalse"
+          :openPopupTrue="openPopupTrue"
+          @isQuestionHandler="isQuestionHandler" />
 
         <CalcQuestion
           v-if="question.type === 'calc'"
@@ -35,8 +40,6 @@
 
         <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
       </div>
-
-     
     </vue-good-wizard>
   </div>
 </template>
@@ -49,6 +52,8 @@ import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 // data
 import CourseData from '@/data/courseSample'
+// events
+import { events } from '@/helpers/events'
 
 export default {
   name: 'CourseContainer',
@@ -67,8 +72,29 @@ export default {
 
   data () {
     return {
-      isAnswerCorrect: null
+      isAnswerCorrect: null,
+      openPopupFalse: false,
+      openPopupTrue: false,
+      isQuestion: false,
+      buttonText: 'Continue'
     }
+  },
+
+  mounted() {
+    events.$on('nextSlide', () => {
+      this.isQuestion = true;
+      this.isAnswerCorrect = null;
+      this.$refs.wizard.goNext(true);
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+    })
+
+    events.$on('thisSlide', () => {
+      this.isQuestion = true;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+    })
   },
 
   computed: {
@@ -88,20 +114,17 @@ export default {
     }
   },
 
-  mounted() {
-  },
-
-  updated() {
-  },
-
   methods: {
     nextClicked (currentPage) {
+      if (this.isQuestion) return false
       if (this.isAnswerCorrect !== null) {
         if (!this.checkAnswer()) {
-          return alert('is not correct')
+          this.openPopupFalse = true
+          return false
         }
         else {
-          alert('correct')
+          this.openPopupTrue = true
+          return false
         }
       }
       if (this.steps.length - 1 === currentPage) {
@@ -124,6 +147,11 @@ export default {
 
     handelAnswerSelect (isCorrect) {
       this.isAnswerCorrect = isCorrect
+    },
+
+    isQuestionHandler(bool, buttonText) {
+      this.isQuestion = bool
+      this.buttonText = buttonText
     }
   }
 }

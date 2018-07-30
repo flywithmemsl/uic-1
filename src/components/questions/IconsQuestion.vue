@@ -9,6 +9,7 @@
             @click="handleAnswerClick(answer, question)"/>
         </div>
       </div>
+      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>
@@ -16,44 +17,54 @@
 <script>
 import AnswerIconCard from '@/components/cards/AnswerIconCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
+import Popup from '@/components/Popup'
+
+import { events } from '@/helpers/events'
 
   export default {
-    props: ['question'],
+    props: ['question', 'openPopupFalse', 'openPopupTrue', 'isQuestion'],
     components: {
       BaseQuestion,
-      AnswerIconCard
+      AnswerIconCard,
+      Popup
     },
 
     data () {
       return {
-        questionCard: this.question || {}
+        questionCard: this.question || {},
       }
     },
 
-  watch: {
-    question:{
-      handler: function (newVal) {
-        this.questionCard = newVal
-      },
-      immediate: true
-    }
-  },
+    watch: {
+      question:{
+        handler: function (newVal) {
+          this.questionCard = newVal
+        },
+        immediate: true
+      }
+    },
+
+    mounted() {
+      this.$emit('isQuestionHandler', true, 'Check');
+      events.$on('dropAnswer', this.dropActiveAnswers)
+    },
 
     methods: {
-    dropActiveAnswers () {
-      this.$set(this, 'questionCard', {
-        text: this.question.text,
-        answers: this.question.answers.map((a) => {
-          return {
-            image: a.image,
-            text: a.text,
-            isCorrect: a.isCorrect,
-            selected: false
-          }
+      dropActiveAnswers () {
+        this.$set(this, 'questionCard', {
+          text: this.question.text,
+          answers: this.question.answers.map((a) => {
+            return {
+              image: a.image,
+              text: a.text,
+              isCorrect: a.isCorrect,
+              selected: false
+            }
+          })
         })
-      })
-    },
+      },
       handleAnswerClick (answer) {
+        this.$emit('isQuestionHandler', false)
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
         this.$emit('selectAnswer', answer.isCorrect)

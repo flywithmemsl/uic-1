@@ -1,11 +1,14 @@
 <template>
-  <div @click="$emit('click')" class="button">
+  <div @click="$emit('click')" :class="{'button': true, 'button-popup': popup}">
     <slot></slot>
   </div>
 </template>
 
 <script>
   export default {
+    props: {
+      popup: Boolean
+    }
   }
 </script>
 
