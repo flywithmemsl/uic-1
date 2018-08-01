@@ -1,28 +1,32 @@
 <template>
-  <div class="navigation" :style="{minHeight: topImage ? '25px' : 'initial'}">
-    <img @click="$router.go(-1)" v-if="back && !white" src="@/assets/back.png" alt="">
-    <img @click="$router.go(-1)" v-if="back && white" src="@/assets/back-white.png" alt="">
-    <!--<div class="steps">-->
-      <!--<div v-for="(step, index) in steps" :key="index">-->
-        <!--<img v-if="step && step.active" class='step-img' src="@/assets/active-step-dash.svg" alt="">-->
-        <!--<img v-else class='step-img' src="@/assets/step-dash.svg" alt="">-->
-      <!--</div>-->
-    <!--</div>-->
-    <div
-      class="top"
-      v-if="topImage"
-      :style="{ backgroundImage: `url(${topImage}` }"
-    />
-    <img v-if="menu && !white" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
-    <img class="share-img" v-if="white" src="@/assets/share.png" alt="">
-    <img v-if="close" src="@/assets/close-icon.svg" alt="" @click="$emit('closeClick')">
+  <div class="wrapper">
+    <div class="navigation" :style="{minHeight: topImage ? '25px' : 'initial'}">
+      <img @click="$router.go(-1)" v-if="back && !white" src="@/assets/back.png" alt="">
+      <img @click="$router.go(-1)" v-if="back && white" src="@/assets/back-white.png" alt="">
+      <img v-if="closeCourseButton" src="@/assets/close-icon.svg" alt="" @click="closeCourse">
+      <div
+        class="top"
+        v-if="topImage"
+        :style="{ backgroundImage: `url(${topImage}` }"
+      />
+
+      <img v-if="menu && !white" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
+      <img class="share-img" v-if="white" src="@/assets/share.png" alt="">
+      <img v-if="close" src="@/assets/close-icon.svg" alt="" @click="$emit('closeClick')">
+    </div>
+
+    <popup :popupBack="isPopupVisible" :closePopup="closePopup" :exitCourse="exitCourse" />
   </div>
 </template>
 
 <script>
+import Popup from '@/components/Popup'
+
 export default {
   name: 'NavigationControls',
-
+  components: {
+    Popup
+  },
   props: {
     'back': Boolean,
     'menu': Boolean,
@@ -30,13 +34,39 @@ export default {
     'close': {
       default: false
     },
+    'closeCourseButton': Boolean,
     'topImage': String,
     'white': Boolean
   },
+  data() {
+    return {
+      isPopupVisible: false
+    }
+  },
+  methods: {
+    closeCourse () {
+      this.isPopupVisible = true
+    },
+
+    exitCourse () {
+      this.isPopupVisible = false
+      this.$router.go(-1)
+    },
+
+    closePopup () {
+      this.isPopupVisible = false
+    }
+  }
+
 }
 </script>
 
 <style scoped lang='scss'>
+
+.wrapper {
+  z-index: 10;
+}
+
 .steps {
   display: flex;
   flex-wrap: wrap;

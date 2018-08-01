@@ -37,11 +37,11 @@
         </component-button>
       </div>
     </div>
-    <div class="popup popup-back" v-if="false">
+    <div class="popup popup-back" v-if="popupBack">
       <div class="container">
         <div class="title">
-          <div class="img-wrapper img-wrapper__false">
-            <div class="img__false">
+          <div class="img-wrapper img-back">
+            <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
             </div>
           </div>
           <div class="title-text title-text__false">
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="buttons-wrapper">
-          <component-button :popup="true" @click="toThisSlide">
+          <component-button :popup="true" @click="exitCourse">
               yes
           </component-button>
           <component-button :popup="true" @click="closePopup">
@@ -69,7 +69,10 @@ import { events } from '@/helpers/events'
   export default {
     props: {
       openPopupTrue: Boolean,
-      openPopupFalse: Boolean
+      openPopupFalse: Boolean,
+      popupBack: Boolean,
+      closePopup: Function,
+      exitCourse: Function
     },
 
     components: {
@@ -84,16 +87,25 @@ import { events } from '@/helpers/events'
       toThisSlide() {
         events.$emit('dropAnswer')
         events.$emit('thisSlide');
-      },
-
-      closePopup() {
-
       }
     }
   }
 </script>
 
 <style scoped>
+.img-back {
+  background: #87DBA2;
+  width: 60px !important;
+  height: 60px !important;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+.img-char {
+  width: 50px;
+  height: 50px;
+}
 .popup {
   position: fixed;
   z-index: 20;

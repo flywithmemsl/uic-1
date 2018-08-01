@@ -49,6 +49,10 @@ import { events } from '@/helpers/events'
       events.$on('dropAnswer', this.dropActiveAnswers)
     },
 
+    updated() {
+      this.$emit('isQuestionHandler', false, 'Check');
+    },
+
     methods: {
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {

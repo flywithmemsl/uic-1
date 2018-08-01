@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    character: ''
+    character: '/static/img/character-girl-4.0b3adca.png'
   },
 
   mutations: {
