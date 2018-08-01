@@ -45,8 +45,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
         text: this.question.text,
         answers: this.question.answers.map((a) => {
           return {
-            image: a.image,
-            text: a.text,
+            ...a,
             selected: false
           }
         })
@@ -70,8 +69,9 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
   .card {
     overflow: hidden;
     margin-bottom: 15px;
-    min-width: 145px;
+    min-width: 250px;
     cursor: pointer;
+    border: 10px solid rgba(0, 0, 0, 0);
   }
 }
 </style>

@@ -89,7 +89,13 @@ export default {
       answers: [
         {
           text: 'Brush Teeth',
-          image: 'answer-img.svg'
+          image: 'answer-img.svg',
+
+          answerData: {
+            text: 'Good for me!',
+            image: 'answer-img.svg',
+            isCorrect: true
+          }
         }
       ]
     },
