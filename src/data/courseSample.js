@@ -2,23 +2,6 @@ export default {
   name: 'Course name',
   questions: [
     {
-      text: 'Mouth Game',
-      desc: 'Arrange the icons to find the answer.',
-      id: '11',
-      type: 'mouth',
-      variants: [
-        {
-          value: 'donut',
-          image: 'donut.svg'
-        },
-        {
-          value: 'apple',
-          image: 'apple.svg',
-          isCorrect: true
-        },
-      ]
-    },
-    {
       text: 'What’s inside your mouth?',
       id: '1',
       type: 'video',
@@ -130,6 +113,23 @@ export default {
           value: 'tooth',
           image: 'tooth.svg'
         }
+      ]
+    },
+    {
+      text: 'Mouth Game',
+      desc: 'Arrange the icons to find the answer.',
+      id: '11',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'donut',
+          image: 'donut.svg'
+        },
+        {
+          value: 'apple',
+          image: 'apple.svg',
+          isCorrect: true
+        },
       ]
     }
   ]

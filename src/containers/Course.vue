@@ -128,10 +128,15 @@ export default {
         }
         else {
           this.openPopupTrue = true
+          this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
           return false
         }
       }
+
+      this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
+
       if (this.steps.length - 1 === currentPage) {
+        
         this.$router.push('/congrats')
       } else {
         return true //return false if you want to prevent moving to next page

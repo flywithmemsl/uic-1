@@ -98,7 +98,6 @@
 
     methods: {
       handleDragChange (e) {
-        console.log(e)
       },
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {

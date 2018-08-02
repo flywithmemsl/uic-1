@@ -128,7 +128,6 @@ export default {
           this.$store.commit('setCharacter', element.src)
         }
       })
-      console.log(this.$store.state.character)
       this.$router.push('/select-age')
     }
   }
