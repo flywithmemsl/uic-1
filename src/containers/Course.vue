@@ -36,6 +36,10 @@
         <MouthQuestion
           v-if="question.type === 'mouth'"
           :question="question"
+          :openPopupFalse="openPopupFalse"
+          :openPopupTrue="openPopupTrue"
+          :openSuccessPopup="openSuccessPopup"
+          :openFailedPopup="openFailedPopup"
           @selectAnswer='handelAnswerSelect' />
 
         <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
@@ -132,6 +136,21 @@ export default {
       } else {
         return true //return false if you want to prevent moving to next page
       }
+    },
+
+    openSuccessPopup () {
+      this.openPopupTrue = true
+      this.openPopupFalse = false
+    },
+
+    openFailedPopup () {
+      this.openPopupTrue = false
+      this.openPopupFalse = true
+    },
+
+    closePopups () {
+      this.openPopupTrue = false
+      this.openPopupFalse = false
     },
 
     checkAnswer () {

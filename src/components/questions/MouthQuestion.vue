@@ -10,26 +10,23 @@
             v-for="(variant, index) in questionCard.variants"
             :answer="variant"
             :key="index"
-            :selected="variant.selected"
-            @click="handleAnswerClick(answer, question)"/>
+          />
         </draggable>
       </div>
 
       <div class="answers">
-
         <div class="field">
           <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
             <AnswerIconCard
               v-for="(variant, i) in fields[2]"
               :answer="variant"
               :key="i"
-              :selected="variant.selected"
-              @click="handleAnswerClick(answer, question)"/>
-              <img src="@/assets/mouth.svg">
+            />
+            <img src="@/assets/mouth.svg">
           </draggable>
         </div>
-
       </div>
+      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>
@@ -37,15 +34,17 @@
 <script>
   import AnswerIconCard from '@/components/cards/AnswerIconCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
+  import Popup from '@/components/Popup'
 
   import draggable from 'vuedraggable'
 
   export default {
-    props: ['question'],
+    props: ['question', 'openPopupTrue', 'openPopupFalse', 'openSuccessPopup', 'openFailedPopup'],
     components: {
       AnswerIconCard,
       BaseQuestion,
-      draggable
+      draggable,
+      Popup
     },
 
     data () {
@@ -55,7 +54,8 @@
           0: [],
           1: [],
           2: []
-        }
+        },
+        initialQuestionCard: {}
       }
     },
 
@@ -70,15 +70,20 @@
 
     methods: {
       handleDragChange (e) {
-        console.log(e)
+        if (e.added.element.isCorrect) {
+          this.openSuccessPopup()
+        }
+        else {
+          this.openFailedPopup()
+          this.question.variants = [...this.question.variants, e.added.element]
+        }
       },
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
           answers: this.question.answers.map((a) => {
             return {
-              image: a.image,
-              text: a.text,
+              ...a,
               selected: false
             }
           })
@@ -131,7 +136,6 @@
 }
 
 .field {
-  border-bottom: 1px solid #fff;
   min-height: 66px;
   padding: 0 10px;
   width: calc(40% - 10px);
@@ -140,6 +144,10 @@
   .field-content {
     display: flex;
     justify-content: space-around;
+  }
+
+  .answer-card {
+    display: none;
   }
 }
 
