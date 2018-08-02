@@ -3,7 +3,7 @@
     <div class="image">
       <img class="card-photo" :src="image" />
     </div>
-    <div v-if="answer.text" class="title">{{ answer.text }}</div>
+    <div class="title">{{ answer.text }}</div>
   </BaseCard>
 </template>
 
@@ -11,7 +11,7 @@
 import BaseCard from './BaseCard'
 
 export default {
-  name: 'AnswerIconCard',
+  name: 'ReviewCard',
 
   props: ['answer', 'selected'],
   components: {
@@ -32,27 +32,26 @@ export default {
 .answer-card {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
+
   margin-bottom: 15px;
   overflow: hidden;
+  margin: 7.5px 0 !important;
   cursor: pointer;
-  width: 110px;
-  height: 110px !important;
-  max-width: initial;
+  width: 100%;
 
   .image {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    width: 100%;
+    width: 100px;
+    padding: 12px;
     justify-content: center;
   }
 
   .card-photo {
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
   }
   .title {
     padding-left: 10px;
@@ -69,6 +68,4 @@ export default {
     padding-bottom: 0;
   }
 }
-
-
 </style>

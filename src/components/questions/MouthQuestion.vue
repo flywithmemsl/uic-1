@@ -167,9 +167,14 @@
   cursor: pointer;
   margin: 4px;
   text-align: center;
-  min-width: 58px;
-  max-width: 58px;
-  height: 67px;
+  width: 110px !important;
+  height: 110px !important;
+  max-width: initial !important;
+  justify-content: center;
+
+  &:not(:first-child) {
+    margin-left: 35px !important; 
+  }
 
   /deep/ .info {
     display: none;
@@ -177,7 +182,18 @@
 
   /deep/ img {
     // padding: 17px 0px;
-    width: 30px;
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  /deep/ .image {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /deep/ .title {
+    display: none !important;
   }
 }
+
 </style>
