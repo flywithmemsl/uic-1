@@ -6,7 +6,7 @@
           v-model="questionCard.variants"
           class="dragArea"
           :options="{group:'variants'}">
-          <AnswerIconCard
+          <AnswerMouthCard
             v-for="(variant, index) in questionCard.variants"
             :answer="variant"
             :key="index"
@@ -17,7 +17,7 @@
       <div class="answers">
         <div class="field">
           <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
+            <AnswerMouthCard
               v-for="(variant, i) in fields[2]"
               :answer="variant"
               :key="i"
@@ -26,13 +26,13 @@
           </draggable>
         </div>
       </div>
-      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
+      <popup :answers="fields[2]" :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>
 
 <script>
-  import AnswerIconCard from '@/components/cards/AnswerIconCard'
+  import AnswerMouthCard from '@/components/cards/AnswerMouthCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
   import Popup from '@/components/Popup'
 
@@ -41,7 +41,7 @@
   export default {
     props: ['question', 'openPopupTrue', 'openPopupFalse', 'openSuccessPopup', 'openFailedPopup'],
     components: {
-      AnswerIconCard,
+      AnswerMouthCard,
       BaseQuestion,
       draggable,
       Popup
@@ -81,6 +81,7 @@
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
+          desc: this.question.desc,
           answers: this.question.answers.map((a) => {
             return {
               ...a,
@@ -173,7 +174,7 @@
   justify-content: center;
 
   &:not(:first-child) {
-    margin-left: 35px !important; 
+    margin-left: 35px !important;
   }
 
   /deep/ .info {

@@ -5,14 +5,14 @@
         <div class="image">
           <img :src="image" alt="">
         </div>
-        <div class="text">{{answer.text}}</div> 
+        <div class="text">{{answer.text}}</div>
       </div>
 
       <div v-else key="answer" class="answer-wrapper" :class="{'correct': answer.answerData.isCorrect, 'not-correct': !answer.answerData.isCorrect}">
         <div class="image">
           <img :src="image" alt="">
         </div>
-        <div class="text">{{answer.answerData.text}}</div> 
+        <div class="text">{{answer.answerData.text}}</div>
       </div>
     </transition>
   </div>
@@ -72,8 +72,16 @@ export default {
 </style>
 
 <style scoped lang="scss">
-img {
-  width: 100%;
+.image {
+  background-color: #3FC9DD;
+  img {
+    width: 100%;
+    max-width: 130px;
+    max-height: 150px;
+    margin: 0 auto;
+    display: inherit;
+    padding: 20px 0;
+  }
 }
 .text {
   /* Exercise: */
@@ -105,17 +113,13 @@ img {
 }
 
 .correct {
-  background: rgba(39,138,181,0.60);
-  background: rgba(39,138,181,0.25);
-  background: rgba(46,110,74,0.60);
+  background-color: #32BEA6;
   box-shadow: 0 2px 3px 0 rgba(31,49,74,0.10);
   border-radius: 10px;
 }
 
 .not-correct {
-  background: rgba(39,138,181,0.60);
-  background: rgba(39,138,181,0.25);
-  background: rgba(255,26,26,0.60);
+  background-color: #AB4852;
   box-shadow: 0 2px 3px 0 rgba(31,49,74,0.10);
   border-radius: 10px;
 }

@@ -31,8 +31,6 @@ export default {
     font-size: 33px;
     color: #FFFFFF;
     letter-spacing: 0.7px;
-    padding-left: 10px;
-    padding-right: 10px;
     margin-top: 40px;
     margin-bottom: 15px;
   }
@@ -46,7 +44,5 @@ export default {
     color: #FFFFFF;
     letter-spacing: 0;
     line-height: 24px;
-    padding-left: 10px;
-    padding-right: 10px;
   }
 </style>
