@@ -85,7 +85,8 @@ export default {
       openPopupFalse: false,
       openPopupTrue: false,
       isQuestion: false,
-      buttonText: 'Continue'
+      buttonText: 'Continue',
+      courseSample: CourseData
     }
   },
 
