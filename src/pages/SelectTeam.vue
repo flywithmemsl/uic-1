@@ -1,8 +1,9 @@
 <template>
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
-    <h1>My Dental Office</h1>
+    <h1>{{getI18n.dentalOffice.title}}</h1>
     <div class="content team">
-      <base-card v-for="(item, index) in team" :key="item.title"
+      <!-- <base-card v-for="(item, index) in getI18n.dentalOffice.items" :key="item.title" -->
+      <base-card v-for="(item, index) in getI18n.dentalOffice.items" :key="item.title"
         :class="getButtonClassName(index + 1)"
         @click="handleButtonClick(index + 1)">
         <div :class="'image image-' + (index+1)">
@@ -11,7 +12,7 @@
         <div class="title">{{ item.title }}</div>
       </base-card>
       <div class="continue-button">
-        <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
+        <ComponentButton @click="continueButtonClick" :disabled="selected === null">{{getI18n.common.continue}}</ComponentButton>
       </div>
     </div>
   </NavigationLayout>
@@ -21,7 +22,10 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 import BaseCard from '@/components/cards/BaseCard'
-import selectATeam from '@/data/selectATeam'
+
+import selectATeam from '@/components/cards/BaseCard'
+
+
 
 export default {
   data () {
@@ -47,7 +51,14 @@ export default {
     ComponentButton
   },
   computed: {
-    team() {
+    getI18n() {
+      return {
+        common: this.$t("message.common"),
+        dentalOffice: this.$t("message.dentalOffice")
+      }
+    },
+
+    getSelectATeam() {
       return selectATeam
     }
   }

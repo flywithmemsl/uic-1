@@ -2,14 +2,14 @@
   <div class="container">
     <div>
       <div class="cards" :style="{background: `url(${require('@/assets/artwork.svg')}) no-repeat center 15px / contain`}">
-        <img src="@/assets/logo.svg">
+        <img :src="getData.imgUrl">
       </div>
 
       <div class="content">
-        <h1>Welcome</h1>
-        <p>University of Illinois at Chicago College of Dentistry presents a game for you to learn better oral hygiene.</p>
+        <h1>{{ getData.welcome }}</h1>
+        <p>{{ getData.description }}</p>
         <div class="button-wrapper">
-          <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
+          <ComponentButton @click="navigateToSelectCharacter">{{ getData.getStarted }}</ComponentButton>
         </div>
       </div>
     </div>
@@ -23,6 +23,13 @@ export default {
   components: {
     ComponentButton
   },
+
+  computed: {
+    getData() {
+      return this.$t("message.onboarding")
+    }
+  },
+
   methods: {
     navigateToSelectCharacter () {
       this.$router.push('/select-character')

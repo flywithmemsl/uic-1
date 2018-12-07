@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h1> Age Group </h1>
+    <h1> {{getI18n.ages.title}} </h1>
     <div class="content">
       <div
         class="avatar"
@@ -12,16 +12,16 @@
           :class="getButtonClassName(1)"
           @click="handleButtonClick(1)"
         >
-          I am 8 or younger
+          {{getI18n.ages.younger}}
         </div>
         <div
           :class="getButtonClassName(2)"
           @click="handleButtonClick(2)"
         >
-          I am 9 or older
+          {{getI18n.ages.older}}
         </div>
       </div>
-      <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
+      <ComponentButton @click="continueButtonClick" :disabled="selected === null">{{getI18n.common.continue}}</ComponentButton>
     </div>
   </NavigationLayout>
 </template>
@@ -53,7 +53,13 @@ export default {
     ComponentButton
   },
 
-  mounted() {
+  computed: {
+    getI18n() {
+      return {
+        common: this.$t("message.common"),
+        ages: this.$t("message.selectAge")
+      }
+    }
   }
 }
 </script>

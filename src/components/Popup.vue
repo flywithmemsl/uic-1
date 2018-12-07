@@ -8,10 +8,10 @@
               <img class="avatar-image" :src='avatarImage'>
             </div>
             <div class="title-text-mouth">
-              Happy Mouth
+              {{getI18n.data.happyMouth}}
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='@/assets/refresh.svg' class="refresh-icon">Play Again
+              <img src='@/assets/refresh.svg' class="refresh-icon">{{getI18n.data.playAgain}}
             </component-button>
           </div>
         </div>
@@ -23,14 +23,14 @@
             </div>
           </div>
           <div class="title-text">
-            You are correct!
+            {{getI18n.data.correct}}
           </div>
         </div>
         <div class="description">
-          Brushing your teeth twice a day is the best way to stop those nasty cavity monsters.
+          {{getI18n.data.correctDescr}}
         </div>
         <component-button :popup="true" @click="toNextSlide">
-          Continue
+          {{getI18n.common.continue}}
         </component-button>
       </div>
     </div>
@@ -42,10 +42,10 @@
               <img class="avatar-image" :src='avatarImage'>
             </div>
             <div class="title-text-mouth">
-              Cravity Monsters
+              {{getI18n.data.cravityMonsters}}
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='@/assets/refresh.svg' class="refresh-icon">Play Again
+              <img src='@/assets/refresh.svg' class="refresh-icon">{{getI18n.data.playAgain}}
             </component-button>
           </div>
         </div>
@@ -57,14 +57,12 @@
             <div class="img__false">
             </div>
           </div>
-          <div class="title-text">
-            Uh-oh! <br />
-            The cavity monsters <br />
-            are coming!
+          <div class="title-text" v-html="getI18n.data.cravityComing">
+
           </div>
         </div>
         <component-button :popup="true" @click="toThisSlide">
-          Try again
+          {{getI18n.data.tryAgain}}
         </component-button>
       </div>
     </div>
@@ -75,17 +73,15 @@
             <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
             </div>
           </div>
-          <div class="title-text">
-            Are you sure you <br />
-            want to leave?
+          <div class="title-text" v-html="getI18n.data.leave">
           </div>
         </div>
         <div class="buttons-wrapper">
           <component-button :popup="true" @click="exitCourse">
-              yes
+            {{getI18n.data.yes}}
           </component-button>
           <component-button :popup="true" @click="closePopup">
-              no
+            {{getI18n.data.no}}
           </component-button>
         </div>
       </div>
@@ -124,6 +120,15 @@ import { events } from '@/helpers/events'
       toThisSlide() {
         events.$emit('dropAnswer')
         events.$emit('thisSlide');
+      }
+    },
+
+    computed: {
+      getI18n() {
+        return {
+          common: this.$t("message.common"),
+          data: this.$t("message.popup")
+        }
       }
     }
   }
