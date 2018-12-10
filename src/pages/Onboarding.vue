@@ -89,13 +89,12 @@ p {
 }
 
 .content {
-  margin-top: 60px;
+
 }
 
 .button-wrapper {
   width: 216px;
   margin: 0 auto;
-  margin-top: 50px;
 }
 
 .login-wrapper {

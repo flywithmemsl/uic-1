@@ -41,7 +41,7 @@
   justify-content: space-between;
   align-items: center;
 
-  margin: 20px auto 20px;
+  margin: 30px auto 0;
   max-width: 158px;
   width: 100%;
 }
