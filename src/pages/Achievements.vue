@@ -11,9 +11,6 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
 import AchievementsList from '@/components/achievements/AchievementsList'
 
-// data
-import achievements from '@/data/achievements'
-
 export default {
   components: {
     NavigationLayout,
@@ -23,7 +20,6 @@ export default {
 
   data () {
     return {
-      achievements,
       menuNames: [
         {name: 'Badges', active: true},
         {name: 'Leaderboard'}
