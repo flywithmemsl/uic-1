@@ -7,28 +7,28 @@
         @closeClick="$emit('closeClick')"/>
       <base-card @click="goToRoute('/courses')">
         <img class="card-photo" src="@/assets/curses-img.jpg" />
-        <div class="text">Courses</div>
+        <div class="text">{{getI18n.courses}}</div>
       </base-card>
 
       <base-card @click="goToRoute('/brush')">
         <img class="card-photo" src="@/assets/brush-timer-img.jpg" />
-        <div class="text">Brush Timer</div>
+        <div class="text">{{getI18n.brushTimer}}</div>
       </base-card>
 
       <base-card @click="goToRoute('/article')">
         <img class="card-photo" src="@/assets/articles-img.jpg" />
-        <div class="text">Articles</div>
+        <div class="text">{{getI18n.articles}}</div>
       </base-card>
 
       <div class="cards-row">
         <base-card @click="goToRoute('/account')">
           <img class="card-photo" src="@/assets/account-img.jpg" />
-          <div class="text">Account</div>
+          <div class="text">{{getI18n.account}}</div>
         </base-card>
 
         <base-card @click="goToRoute('/about')">
           <img class="card-photo" src="@/assets/about-img.jpg" />
-          <div class="text">About</div>
+          <div class="text">{{getI18n.about}}</div>
         </base-card>
       </div>
     </div>
@@ -51,6 +51,12 @@ export default {
     goToRoute (route) {
       this.$emit('closeClick')
       this.$router.push(route)
+    }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.menu")
     }
   }
 }

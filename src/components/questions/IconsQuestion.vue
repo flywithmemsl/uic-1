@@ -7,6 +7,9 @@
             :answer="answer"
             :selected="answer.selected"
             @click="handleAnswerClick(answer, question)"/>
+          <div class="answer-or" v-if="index+1 !== questionCard.answers.length">
+            {{ $t("message.common.or") }}
+          </div>
         </div>
       </div>
       <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
@@ -88,17 +91,6 @@ import { events } from '@/helpers/events'
 
 .answer {
   &:not(:last-child) {
-    &::after {
-      content: 'or';
-      width: 100%;
-      text-align: center;
-      display: block;
-      margin: 21px 0;
-      font-family: ZillaSlab-Bold;
-      font-size: 26px;
-      color: #FFFFFF;
-      letter-spacing: 0;
-    }
 
     /deep/ .image {
       background: #FF6D7F;
@@ -111,5 +103,15 @@ import { events } from '@/helpers/events'
     }
   }
 
+  .answer-or {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 21px 0;
+    font-family: ZillaSlab-Bold;
+    font-size: 26px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+  }
 }
 </style>

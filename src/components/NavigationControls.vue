@@ -3,6 +3,7 @@
     <div class="navigation" :style="{minHeight: topImage ? '25px' : 'initial'}">
       <img @click="$router.go(-1)" v-if="back && !white" src="@/assets/back.png" alt="">
       <img @click="$router.go(-1)" v-if="back && white" src="@/assets/back-white.png" alt="">
+
       <img v-if="closeCourseButton" src="@/assets/close-icon.svg" alt="" @click="closeCourse">
       <div
         class="top"
@@ -113,5 +114,16 @@ export default {
   transform: translate(-50%, -25%);
 }
 
-  
+.language-btn {
+  position: absolute;
+  right: 20px;
+  top: 2px;
+
+  background: transparent;
+  font-size: 14px;
+  border: 0;
+  color: #ffffff;
+  font-weight: bold;
+}
+
 </style>

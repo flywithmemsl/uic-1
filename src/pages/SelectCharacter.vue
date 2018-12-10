@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h1>Select Coach</h1>
+    <h1>{{getData.selectCoach}}</h1>
     <div class="character-box">
       <div
         v-for="(row, index) in rows"
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="continue-button">
-      <ComponentButton @click="buttonHandler" :disabled="!selectedCard">Continue</ComponentButton>
+      <ComponentButton @click="buttonHandler" :disabled="!selectedCard">{{getData.continue}}</ComponentButton>
     </div>
   </NavigationLayout>
 </template>
@@ -105,7 +105,12 @@ export default {
         res = this.cards.girls
       }
       return chunk(res, 2)
+    },
+
+    getData() {
+      return this.$t("message.common")
     }
+
   },
   methods: {
     isCardSelected (value) {
@@ -116,7 +121,7 @@ export default {
       }
     },
     selectCard (value) {
-      this.selectedCard = true      
+      this.selectedCard = true
       this.character = value
       if (this.step === 1) {
         this.value.gender = value

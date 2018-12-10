@@ -66,8 +66,18 @@ export default new Vuex.Store({
     updateCourseProgress(state, payload) {
       const { id, currentProgress } = payload
       state.courses.find(item => item.id === +id).progress = currentProgress
-    }
+    },
+
+    // setCourses(state, payload) {
+    //   state.courses = payload.data
+    // }
   },
+
+  // actions: {
+  //   setCourses({commit}, names) {
+  //     commit('setNameCourses', names)
+  //   }
+  // },
 
   getters: {
     getCourses: (state) => state.courses

@@ -3,8 +3,8 @@
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
-      :finalStepLabel="buttonText"
-      :nextStepLabel="buttonText"
+      :finalStepLabel="curse.common.continue"
+      :nextStepLabel="curse.common.continue"
       :onNext="nextClicked"
     >
 
@@ -13,7 +13,7 @@
           v-if="question.type === 'cards'"
           :question="question"
           :index="index"
-          @selectAnswer='handelAnswerSelect' 
+          @selectAnswer='handelAnswerSelect'
           @isQuestionHandler="isQuestionHandler" />
 
         <VideoQuestion
@@ -46,7 +46,7 @@
           :openFailedPopup="openFailedPopup"
           @selectAnswer='handelAnswerSelect' />
 
-        <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
+        <span v-if="steps[index].nextLabel" class="next-label">{{curse.common.nextUp}}: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
   </div>
@@ -85,7 +85,8 @@ export default {
       openPopupFalse: false,
       openPopupTrue: false,
       isQuestion: false,
-      buttonText: 'Continue'
+      buttonText: 'Continue',
+      courseSample: CourseData
     }
   },
 
@@ -111,7 +112,7 @@ export default {
   computed: {
     // TODO get curse by prop Id
     curse () {
-      return CourseData
+      return this.$t("message")
     },
 
     steps () {
