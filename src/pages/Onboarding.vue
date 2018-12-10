@@ -8,6 +8,7 @@
       <div class="content">
         <h1>{{ getData.welcome }}</h1>
         <p>{{ getData.description }}</p>
+        <button-language/>
         <div class="button-wrapper">
           <ComponentButton @click="navigateToSelectCharacter">{{ getData.getStarted }}</ComponentButton>
         </div>
@@ -19,9 +20,13 @@
 
 <script>
 import ComponentButton from '@/components/Button'
+import ButtonLanguage from '@/components/ButtonLanguage'
+
+
 export default {
   components: {
-    ComponentButton
+    ComponentButton,
+    ButtonLanguage
   },
 
   computed: {
