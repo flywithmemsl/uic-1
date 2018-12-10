@@ -88,10 +88,6 @@ p {
 
 }
 
-.content {
-
-}
-
 .button-wrapper {
   width: 216px;
   margin: 0 auto;
