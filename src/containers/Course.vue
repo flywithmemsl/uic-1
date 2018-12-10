@@ -58,8 +58,7 @@ import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
-// data
-import CourseData from '@/data/courseSample'
+
 // events
 import { events } from '@/helpers/events'
 
@@ -85,8 +84,7 @@ export default {
       openPopupFalse: false,
       openPopupTrue: false,
       isQuestion: false,
-      buttonText: 'Continue',
-      courseSample: CourseData
+      buttonText: 'Continue'
     }
   },
 
