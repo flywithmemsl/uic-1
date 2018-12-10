@@ -7,7 +7,7 @@
           :answer="answer"
           :key="index"
           :selected="answer.selected"
-          @click="handleAnswerClick(answer, question)"/>
+          @click="handleAnswerClick(answer)"/>
       </div>
     </div>
   </BaseQuestion>
@@ -18,7 +18,7 @@ import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 
   export default {
-    props: ['question'],
+    props: ['question', 'index'],
     components: {
       BaseQuestion,
       AnswerCard
@@ -30,32 +30,40 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
       }
     },
 
-  watch: {
-    question:{
-      handler: function (newVal) {
-        this.questionCard = newVal
-      },
-      immediate: true
-    }
-  },
+    mounted() {
+      this.$emit('isQuestionHandler', true, 'Check');
+    },
+
+    updated() {
+      this.$emit('isQuestionHandler', false, 'Check');
+    },
+
+    watch: {
+      question:{
+        handler: function (newVal) {
+          this.questionCard = newVal
+        },
+        immediate: true
+      }
+    },
 
     methods: {
     dropActiveAnswers () {
       this.$set(this, 'questionCard', {
         text: this.question.text,
+        desc: this.question.desc,
         answers: this.question.answers.map((a) => {
           return {
-            image: a.image,
-            text: a.text,
+            ...a,
             selected: false
           }
         })
       })
     },
-      handleAnswerClick (answer) {
+    handleAnswerClick (answer) {
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer')
+        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
       }
     }
   }
@@ -70,8 +78,9 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
   .card {
     overflow: hidden;
     margin-bottom: 15px;
-    min-width: 145px;
+    min-width: 250px;
     cursor: pointer;
+    border: 10px solid rgba(0, 0, 0, 0);
   }
 }
 </style>

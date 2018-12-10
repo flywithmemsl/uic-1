@@ -17,7 +17,7 @@
           </youtube>
           <div v-if="isStartButtonVisible" @click="restartVideo" class="button">
             <div class="icon" :style="{background: `url(${require('@/assets/play.png')}) no-repeat center / contain`}" />
-            <div class="text">{{ buttonText }}</div>
+            <div class="text">{{ getI18n }}</div>
           </div>
         </div>
       </div>
@@ -42,8 +42,7 @@ export default {
     return {
       questionCard: this.question || {},
       videoId: this.$youtube.getIdFromURL(this.question.link),
-      isStartButtonVisible: false,
-      buttonText: 'Watch Me'
+      isStartButtonVisible: false
     }
   },
 
@@ -94,6 +93,12 @@ export default {
 
   mounted() {
     this.$emit('isQuestionHandler', false, 'Continue')
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.common.watchMe")
+    }
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <AccountHeader :user="user"></AccountHeader>
+    <AccountHeader :user="getI18n.user"></AccountHeader>
     <MenuList
-      v-for="(menu, index) in menus"
+      v-for="(menu, index) in getI18n.menus"
       :key="index"
       :name="menu.name"
       :items="menu.items"
@@ -22,6 +22,12 @@ export default {
     NavigationLayout,
     MenuList,
     AccountHeader
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.account")
+    }
   },
 
   data () {

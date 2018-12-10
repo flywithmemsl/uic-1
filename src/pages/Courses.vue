@@ -2,18 +2,18 @@
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
     <h1>Topics</h1>
     <div class="courses_wrapper">
-      <div v-for="course in courses" class="course" @click="() => navigateToCourse(course.id)" :key="course.id">
+      <div v-for="(course, index) in getCourses" class="course" @click="() => navigateToCourse(course.id)" :key="course.id">
         <radial-progress-bar
           :diameter="145"
-          :totalSteps="10"
-          :completedSteps="5"
+          :totalSteps="11"
+          :completedSteps="course.progress"
           :startColor="'#87DBA2'"
           :stopColor="'#87DBA2'"
           :innerStrokeColor="'#2E5C69'"
         >
           <div class="course_top" :style="{ background: `url(${course.image}) no-repeat center / cover` }" />
         </radial-progress-bar>
-        <div class="course_bottom">{{course.name}}</div>
+        <div class="course_bottom">{{courseNames[index]}}</div>
       </div>
     </div>
   </NavigationLayout>
@@ -23,6 +23,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
 import RadialProgressBar from 'vue-radial-progress'
+import { mapGetters } from 'vuex'
 
   export default {
     data: () => ({
@@ -30,54 +31,18 @@ import RadialProgressBar from 'vue-radial-progress'
         {name: 'All', active: true},
         {name: 'Ongoing'},
         {name: 'Completed'}
-      ],
-
-      courses: [
-        {
-          name: 'Cavity Prevention',
-          image: require('@/assets/cavity-prevention.svg'),
-          id: 1
-        },
-        {
-          name: 'Baby Teeth',
-          image: require('@/assets/baby-teeth.svg'),
-          id: 2
-        },
-        {
-          name: 'Proper Brushing',
-          image: require('@/assets/proper-brushing.svg'),
-          id: 3
-        },
-        {
-          name: 'Prenatal Oral Care',
-          image: require('@/assets/prenatal.svg'),
-          id: 4
-        },
-        {
-          name: 'Cavity Math',
-          image: require('@/assets/cavity-math.svg'),
-          id: 5
-        },
-        {
-          name: 'Sugar',
-          image: require('@/assets/sugar.svg'),
-          id: 6
-        },
-        {
-          name: 'Memory',
-          image: require('@/assets/memory.svg'),
-          id: 7
-        },
-        {
-          name: 'Matching',
-          image: require('@/assets/matching.svg'),
-          id: 8
-        }
       ]
     }),
     methods: {
       navigateToCourse(id) {
         this.$router.push('/details')
+      }
+    },
+
+    computed: {
+      ...mapGetters(['getCourses']),
+      courseNames() {
+        return this.$t("message.courses.items") || ''
       }
     },
     components: {

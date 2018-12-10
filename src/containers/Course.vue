@@ -3,8 +3,8 @@
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
-      :finalStepLabel="buttonText"
-      :nextStepLabel="buttonText"
+      :finalStepLabel="curse.common.continue"
+      :nextStepLabel="curse.common.continue"
       :onNext="nextClicked"
     >
 
@@ -12,7 +12,9 @@
         <CardsQuestion
           v-if="question.type === 'cards'"
           :question="question"
-          @selectAnswer='handelAnswerSelect' />
+          :index="index"
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler" />
 
         <VideoQuestion
           v-if="question.type === 'video'"
@@ -23,7 +25,9 @@
         <IconsQuestion
           v-if="question.type === 'icons'"
           :question="question"
+          :index="index"
           @selectAnswer="handelAnswerSelect"
+          @selectContinue="handelContinue"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
           @isQuestionHandler="isQuestionHandler" />
@@ -36,9 +40,13 @@
         <MouthQuestion
           v-if="question.type === 'mouth'"
           :question="question"
+          :openPopupFalse="openPopupFalse"
+          :openPopupTrue="openPopupTrue"
+          :openSuccessPopup="openSuccessPopup"
+          :openFailedPopup="openFailedPopup"
           @selectAnswer='handelAnswerSelect' />
 
-        <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
+        <span v-if="steps[index].nextLabel" class="next-label">{{curse.common.nextUp}}: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
   </div>
@@ -72,16 +80,19 @@ export default {
 
   data () {
     return {
+      currentQuestionType: null,
       isAnswerCorrect: null,
       openPopupFalse: false,
       openPopupTrue: false,
       isQuestion: false,
-      buttonText: 'Continue'
+      buttonText: 'Continue',
+      courseSample: CourseData
     }
   },
 
   mounted() {
     events.$on('nextSlide', () => {
+      this.currentQuestionType = null;
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.$refs.wizard.goNext(true);
@@ -91,6 +102,7 @@ export default {
 
     events.$on('thisSlide', () => {
       this.isQuestion = true;
+      this.currentQuestionType = null;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
@@ -100,7 +112,7 @@ export default {
   computed: {
     // TODO get curse by prop Id
     curse () {
-      return CourseData
+      return this.$t("message")
     },
 
     steps () {
@@ -108,6 +120,8 @@ export default {
         return {
           label: q.text,
           slot: q.id,
+          type: this.curse.questions[index].type,
+          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards'): false},
           nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null
         }
       })
@@ -123,15 +137,37 @@ export default {
           return false
         }
         else {
-          this.openPopupTrue = true
-          return false
+          if (this.currentQuestionType === 'icons') {
+            this.openPopupTrue = true
+            this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
+            return false
+          }
         }
       }
+
+      this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
+
       if (this.steps.length - 1 === currentPage) {
+
         this.$router.push('/congrats')
       } else {
         return true //return false if you want to prevent moving to next page
       }
+    },
+
+    openSuccessPopup () {
+      this.openPopupTrue = true
+      this.openPopupFalse = false
+    },
+
+    openFailedPopup () {
+      this.openPopupTrue = false
+      this.openPopupFalse = true
+    },
+
+    closePopups () {
+      this.openPopupTrue = false
+      this.openPopupFalse = false
     },
 
     checkAnswer () {
@@ -145,8 +181,18 @@ export default {
       }
     },
 
-    handelAnswerSelect (isCorrect) {
-      this.isAnswerCorrect = isCorrect
+    handelContinue () {
+      this.isQuestion = true;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+      this.$refs.wizard.goNext(true);
+    },
+
+    handelAnswerSelect (data) {
+      this.currentQuestionType = this.steps[data.index].type
+      this.steps[data.index].options.nextDisabled = false
+      this.isAnswerCorrect = data.isCorrect
     },
 
     isQuestionHandler(bool, buttonText) {
@@ -252,7 +298,7 @@ export default {
   bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
+  width: 90%;
   font-family: 'Zilla Slab';
   font-size: 15px;
   color: #FFFFFF;

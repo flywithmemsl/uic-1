@@ -6,46 +6,45 @@
           v-model="questionCard.variants"
           class="dragArea"
           :options="{group:'variants'}">
-          <AnswerIconCard
+          <AnswerMouthCard
             v-for="(variant, index) in questionCard.variants"
             :answer="variant"
             :key="index"
-            :selected="variant.selected"
-            @click="handleAnswerClick(answer, question)"/>
+          />
         </draggable>
       </div>
 
       <div class="answers">
-
         <div class="field">
           <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
+            <AnswerMouthCard
               v-for="(variant, i) in fields[2]"
               :answer="variant"
               :key="i"
-              :selected="variant.selected"
-              @click="handleAnswerClick(answer, question)"/>
-              <img src="@/assets/mouth.svg">
+            />
+            <img src="@/assets/mouth.svg">
           </draggable>
         </div>
-
       </div>
+      <popup :answers="fields[2]" :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>
 
 <script>
-  import AnswerIconCard from '@/components/cards/AnswerIconCard'
+  import AnswerMouthCard from '@/components/cards/AnswerMouthCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
+  import Popup from '@/components/Popup'
 
   import draggable from 'vuedraggable'
 
   export default {
-    props: ['question'],
+    props: ['question', 'openPopupTrue', 'openPopupFalse', 'openSuccessPopup', 'openFailedPopup'],
     components: {
-      AnswerIconCard,
+      AnswerMouthCard,
       BaseQuestion,
-      draggable
+      draggable,
+      Popup
     },
 
     data () {
@@ -55,7 +54,8 @@
           0: [],
           1: [],
           2: []
-        }
+        },
+        initialQuestionCard: {}
       }
     },
 
@@ -70,15 +70,21 @@
 
     methods: {
       handleDragChange (e) {
-        console.log(e)
+        if (e.added.element.isCorrect) {
+          this.openSuccessPopup()
+        }
+        else {
+          this.openFailedPopup()
+          this.question.variants = [...this.question.variants, e.added.element]
+        }
       },
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
+          desc: this.question.desc,
           answers: this.question.answers.map((a) => {
             return {
-              image: a.image,
-              text: a.text,
+              ...a,
               selected: false
             }
           })
@@ -131,7 +137,6 @@
 }
 
 .field {
-  border-bottom: 1px solid #fff;
   min-height: 66px;
   padding: 0 10px;
   width: calc(40% - 10px);
@@ -140,6 +145,10 @@
   .field-content {
     display: flex;
     justify-content: space-around;
+  }
+
+  .answer-card {
+    display: none;
   }
 }
 
@@ -159,9 +168,14 @@
   cursor: pointer;
   margin: 4px;
   text-align: center;
-  min-width: 58px;
-  max-width: 58px;
-  height: 67px;
+  width: 110px !important;
+  height: 110px !important;
+  max-width: initial !important;
+  justify-content: center;
+
+  &:not(:first-child) {
+    margin-left: 35px !important;
+  }
 
   /deep/ .info {
     display: none;
@@ -169,7 +183,18 @@
 
   /deep/ img {
     // padding: 17px 0px;
-    width: 30px;
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  /deep/ .image {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /deep/ .title {
+    display: none !important;
   }
 }
+
 </style>

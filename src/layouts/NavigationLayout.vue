@@ -6,6 +6,7 @@
       :steps='steps'
       :close='close'
       :topImage="topImage"
+      :closeCourseButton="closeCourseButton"
       @menuClick="showMenu = !showMenu"/>
     <slot />
     <transition name="slide-fade">
@@ -20,7 +21,7 @@ import NavigationControls from '@/components/NavigationControls'
 import Menu from '@/components/shared/Menu'
 
 export default {
-  props: ['topImage', 'back', 'menu', 'steps', 'close'],
+  props: ['topImage', 'back', 'menu', 'steps', 'close', 'closeCourseButton'],
 
   name: 'NavigationLayout',
 

@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true">
+  <NavigationLayout :closeCourseButton="true" :menu="true">
     <CourseContainer :curseId="$route.params.id || 0"></CourseContainer>
   </NavigationLayout>
 </template>
